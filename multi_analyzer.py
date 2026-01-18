@@ -10,6 +10,7 @@ from enum import Enum
 
 from instruments import InstrumentConfig, INSTRUMENTS, CME_MONTH_CODES
 from multi_data_fetcher import InstrumentData
+from option_contracts import DomesticOptionContractFetcher, ForeignOptionContractFetcher
 
 logger = logging.getLogger(__name__)
 
@@ -91,6 +92,10 @@ class MultiArbitrageAnalyzer:
         self.config = config or {}
         self.usd_cny_rate = self.config.get('usd_cny_rate', 7.20)
         self.signal_history: Dict[str, List] = {}
+
+        # 初始化期权合约获取器
+        self.domestic_fetcher = DomesticOptionContractFetcher()
+        self.foreign_fetcher = ForeignOptionContractFetcher()
 
     def analyze(self, inst_data: InstrumentData) -> Optional[MultiArbitrageSignal]:
         """
@@ -187,11 +192,11 @@ class MultiArbitrageAnalyzer:
             return SignalStrength.WEAK
 
     def _get_contracts(self, inst_data: InstrumentData) -> dict:
-        """获取合约代码"""
+        """获取期权合约代码（从数据源动态获取）"""
         config = inst_data.config
         now = datetime.now()
 
-        # 取下下月合约
+        # 计算下下月
         month = now.month + 2
         year = now.year
         if month > 12:
@@ -199,30 +204,99 @@ class MultiArbitrageAnalyzer:
             year += 1
 
         year_short = year % 100
+        month_str = f"{year_short:02d}{month:02d}"
 
-        # 国内合约
-        domestic_base = f"{config.domestic_symbol}{year_short:02d}{month:02d}"
+        contracts = {
+            "domestic_call": "",
+            "domestic_put": "",
+            "foreign_call": "",
+            "foreign_put": "",
+            "domestic_strike": 0,
+            "foreign_strike": 0
+        }
 
-        # 根据品种计算行权价
+        # 获取国内期权合约
         if inst_data.domestic:
-            price = inst_data.domestic.price
-            if config.domestic_symbol == "CU":
-                strike = round(price / 1000) * 1000
-            elif config.domestic_symbol == "AU":
-                strike = round(price / 10) * 10
-            elif config.domestic_symbol == "AG":
-                strike = round(price / 100) * 100
-            elif config.domestic_symbol == "SC":
-                strike = round(price / 10) * 10
-            else:
-                strike = round(price)
+            try:
+                atm_contract = self.domestic_fetcher.get_atm_contract(
+                    inst_data.instrument,
+                    inst_data.domestic.price,
+                    month_str
+                )
+
+                if atm_contract:
+                    contracts["domestic_call"] = atm_contract.call_symbol
+                    contracts["domestic_put"] = atm_contract.put_symbol
+                    contracts["domestic_strike"] = atm_contract.strike_price
+                    logger.info(
+                        f"{config.name} 国内期权: "
+                        f"{atm_contract.call_symbol}/{atm_contract.put_symbol} "
+                        f"行权价 {atm_contract.strike_price}"
+                    )
+                else:
+                    logger.warning(f"{config.name} 未找到国内ATM期权，使用估算")
+                    # 回退到估算
+                    contracts.update(self._get_domestic_fallback(inst_data, month_str))
+
+            except Exception as e:
+                logger.error(f"获取{config.name}国内期权失败: {e}")
+                contracts.update(self._get_domestic_fallback(inst_data, month_str))
+
+        # 获取境外期权合约
+        if inst_data.foreign:
+            try:
+                # CME期权使用yfinance
+                foreign_contract = self.foreign_fetcher.get_atm_contract(
+                    config.foreign_yf_symbol,
+                    inst_data.foreign.price
+                )
+
+                if foreign_contract:
+                    contracts["foreign_call"] = foreign_contract['call_symbol']
+                    contracts["foreign_put"] = foreign_contract['put_symbol']
+                    contracts["foreign_strike"] = foreign_contract['strike']
+                    logger.info(
+                        f"{config.name} 境外期权: "
+                        f"{foreign_contract['call_symbol']}/{foreign_contract['put_symbol']} "
+                        f"行权价 {foreign_contract['strike']}"
+                    )
+                else:
+                    logger.warning(f"{config.name} 未找到境外ATM期权，使用估算")
+                    contracts.update(self._get_foreign_fallback(inst_data, month, year_short))
+
+            except Exception as e:
+                logger.error(f"获取{config.name}境外期权失败: {e}")
+                contracts.update(self._get_foreign_fallback(inst_data, month, year_short))
+
+        return contracts
+
+    def _get_domestic_fallback(self, inst_data: InstrumentData, month_str: str) -> dict:
+        """国内期权回退估算"""
+        config = inst_data.config
+        price = inst_data.domestic.price if inst_data.domestic else 0
+
+        # 根据品种估算行权价
+        if config.domestic_symbol == "CU":
+            strike = round(price / 2000) * 2000
+        elif config.domestic_symbol == "AU":
+            strike = round(price / 2) * 2
+        elif config.domestic_symbol == "AG":
+            strike = round(price / 200) * 200
+        elif config.domestic_symbol == "SC":
+            strike = round(price / 5) * 5
         else:
-            strike = 0
+            strike = round(price)
 
-        domestic_call = f"{domestic_base}C{int(strike)}"
-        domestic_put = f"{domestic_base}P{int(strike)}"
+        domestic_base = f"{config.domestic_symbol}{month_str}"
+        return {
+            "domestic_call": f"{domestic_base}C{int(strike)}",
+            "domestic_put": f"{domestic_base}P{int(strike)}",
+            "domestic_strike": strike
+        }
 
-        # 境外合约
+    def _get_foreign_fallback(self, inst_data: InstrumentData, month: int, year_short: int) -> dict:
+        """境外期权回退估算"""
+        config = inst_data.config
         cme_month_code = CME_MONTH_CODES.get(month, 'F')
         foreign_base = f"{config.foreign_symbol}{cme_month_code}{year_short:02d}"
 
@@ -233,7 +307,7 @@ class MultiArbitrageAnalyzer:
             elif config.foreign_symbol == "GC":
                 foreign_strike = round(foreign_price / 10) * 10
             elif config.foreign_symbol == "SI":
-                foreign_strike = round(foreign_price * 2) / 2  # 0.5 increments
+                foreign_strike = round(foreign_price * 2) / 2
                 foreign_strike = int(foreign_strike * 100)
             elif config.foreign_symbol == "CL":
                 foreign_strike = round(foreign_price)
@@ -242,15 +316,9 @@ class MultiArbitrageAnalyzer:
         else:
             foreign_strike = 0
 
-        foreign_call = f"{foreign_base}C{foreign_strike}"
-        foreign_put = f"{foreign_base}P{foreign_strike}"
-
         return {
-            "domestic_call": domestic_call,
-            "domestic_put": domestic_put,
-            "foreign_call": foreign_call,
-            "foreign_put": foreign_put,
-            "domestic_strike": strike,
+            "foreign_call": f"{foreign_base}C{foreign_strike}",
+            "foreign_put": f"{foreign_base}P{foreign_strike}",
             "foreign_strike": foreign_strike
         }
 
