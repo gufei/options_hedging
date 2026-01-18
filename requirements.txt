@@ -1,0 +1,17 @@
+# 跨境期权套利监控系统依赖
+
+# 数据获取
+akshare>=1.12.0          # 国内期货期权数据
+yfinance>=0.2.36         # CME/国际市场数据
+requests>=2.31.0         # HTTP请求
+
+# Telegram 通知
+python-telegram-bot>=20.7  # Telegram Bot API
+
+# 数据处理
+pandas>=2.0.0            # 数据处理
+numpy>=1.24.0            # 数值计算
+
+# 可选：高级功能
+# scipy>=1.11.0          # 期权定价计算
+# py_vollib>=1.0.1       # Black-Scholes 模型

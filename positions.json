@@ -1,0 +1,22 @@
+[
+  {
+    "id": "POS_20260118_202023",
+    "open_time": "2026-01-18 20:20:23",
+    "direction": "buy_shfe_sell_cme",
+    "open_shfe_iv": 20.75,
+    "open_cme_iv": 32.82,
+    "open_iv_diff": 12.07,
+    "open_shfe_price": 103390.0,
+    "open_cme_price": 4.7,
+    "shfe_call": "CU2603C103000",
+    "shfe_put": "CU2603P103000",
+    "cme_call": "HGH26C470",
+    "cme_put": "HGH26P470",
+    "expiry_date": "2026-03-20",
+    "status": "open",
+    "close_time": null,
+    "close_reason": null,
+    "current_iv_diff": null,
+    "unrealized_pnl": null
+  }
+]
