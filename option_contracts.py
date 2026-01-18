@@ -109,6 +109,10 @@ class DomesticOptionContractFetcher:
             }.get(instrument, '')
 
             contract = f"{symbol_prefix}{month}"
+            
+            # 特殊处理：原油期权使用option_margin接口
+            if instrument == 'crude_oil':
+                return self._get_crude_oil_option_chain(contract)
 
             df = self.ak.option_commodity_contract_table_sina(
                 symbol=name,
@@ -121,8 +125,13 @@ class DomesticOptionContractFetcher:
             # DataFrame列结构（从akshare返回）:
             # 0-6: 看涨合约信息, 7: 行权价, 8: 看涨期权代码, 9-16: 看跌合约信息, 16: 看跌期权代码
             contracts = []
-            for _, row in df.iterrows():
+            for idx, row in df.iterrows():
                 try:
+                    # 使用 iloc 按索引访问，但添加边界检查
+                    if len(row) < 17:
+                        logger.warning(f"第 {idx} 行数据不完整，跳过")
+                        continue
+
                     contract = OptionContract(
                         call_symbol=row.iloc[8],   # 看涨期权代码
                         put_symbol=row.iloc[16],   # 看跌期权代码
@@ -131,14 +140,85 @@ class DomesticOptionContractFetcher:
                         put_price=float(row.iloc[10] if not pd.isna(row.iloc[10]) else 0)  # 看跌最新价
                     )
                     contracts.append(contract)
+                except (ValueError, TypeError, IndexError) as e:
+                    logger.debug(f"解析第 {idx} 行合约失败: {e}")
+                    continue
                 except Exception as e:
-                    logger.debug(f"解析合约行失败: {e}")
+                    logger.warning(f"解析第 {idx} 行时发生未预期的错误: {e}")
                     continue
 
             return contracts
 
         except Exception as e:
             logger.error(f"获取{instrument} {month}期权链失败: {e}")
+            return []
+    
+    def _get_crude_oil_option_chain(self, contract: str) -> List[OptionContract]:
+        """
+        获取原油期权链（使用option_margin接口）
+        
+        Args:
+            contract: 合约代码，如 'sc2603'
+            
+        Returns:
+            期权合约列表
+        """
+        try:
+            # 使用option_margin接口获取原油期权数据
+            df = self.ak.option_margin(symbol="原油期权")
+            
+            if df.empty:
+                logger.warning("原油期权数据为空")
+                return []
+            
+            # 筛选指定月份的合约
+            df_filtered = df[df['合约代码'].str.startswith(contract)]
+            
+            if df_filtered.empty:
+                logger.warning(f"未找到 {contract} 月份的原油期权")
+                return []
+            
+            contracts = []
+            
+            # 提取看涨和看跌期权
+            # 合约代码格式: sc2603C440, sc2603P440
+            calls = df_filtered[df_filtered['合约代码'].str.contains('C')]
+            puts = df_filtered[df_filtered['合约代码'].str.contains('P')]
+            
+            # 按行权价分组
+            strike_prices = set()
+            for code in calls['合约代码']:
+                # 从sc2603C440提取440
+                strike = code.split('C')[1]
+                strike_prices.add(int(strike))
+            
+            for strike in sorted(strike_prices):
+                call_code = f"{contract}C{strike}"
+                put_code = f"{contract}P{strike}"
+                
+                # 获取对应的数据
+                call_data = calls[calls['合约代码'] == call_code]
+                put_data = puts[puts['合约代码'] == put_code]
+                
+                if not call_data.empty and not put_data.empty:
+                    call_price = float(call_data.iloc[0]['结算价'])
+                    put_price = float(put_data.iloc[0]['结算价'])
+                    
+                    contract_obj = OptionContract(
+                        call_symbol=call_code,
+                        put_symbol=put_code,
+                        strike_price=float(strike),
+                        call_price=call_price,
+                        put_price=put_price,
+                        atm_iv=None  # option_margin接口不提供IV
+                    )
+                    contracts.append(contract_obj)
+            
+            logger.info(f"成功获取 {len(contracts)} 个原油期权合约（{contract}月份）")
+            return contracts
+            
+        except Exception as e:
+            logger.error(f"获取原油期权链失败: {e}")
             return []
 
     def get_atm_contract(
@@ -193,6 +273,66 @@ class DomesticOptionContractFetcher:
             )
 
         return atm_contract
+    
+    def _generate_placeholder_contract(
+        self,
+        instrument: str,
+        underlying_price: float,
+        month: str
+    ) -> OptionContract:
+        """
+        生成占位符合约（当真实数据不可用时）
+        
+        Args:
+            instrument: 品种代码
+            underlying_price: 标的价格
+            month: 月份代码
+            
+        Returns:
+            占位符期权合约
+        """
+        # 品种前缀映射
+        symbol_prefix = {
+            'copper': 'cu',
+            'gold': 'au',
+            'silver': 'ag',
+            'crude_oil': 'sc'
+        }.get(instrument, 'xx')
+        
+        # 根据价格确定合理的行权价（取整到合适的档位）
+        if instrument == 'crude_oil':
+            # 原油：按5元档位取整
+            strike = round(underlying_price / 5) * 5
+        elif instrument == 'copper':
+            # 铜：按1000元档位取整
+            strike = round(underlying_price / 1000) * 1000
+        elif instrument == 'gold':
+            # 黄金：按2元档位取整
+            strike = round(underlying_price / 2) * 2
+        elif instrument == 'silver':
+            # 白银：按500元档位取整
+            strike = round(underlying_price / 500) * 500
+        else:
+            strike = round(underlying_price)
+        
+        # 生成合约代码
+        call_symbol = f"{symbol_prefix}{month}C{int(strike)}"
+        put_symbol = f"{symbol_prefix}{month}P{int(strike)}"
+        
+        logger.info(
+            f"{instrument} 生成占位符合约: "
+            f"{call_symbol}/{put_symbol} "
+            f"行权价 {strike} (数据不可用)"
+        )
+        
+        return OptionContract(
+            call_symbol=call_symbol,
+            put_symbol=put_symbol,
+            strike_price=strike,
+            call_price=0.0,
+            put_price=0.0,
+            atm_iv=None
+        )
 
 
 class ForeignOptionContractFetcher:
@@ -271,19 +411,27 @@ class ForeignOptionContractFetcher:
         calls, puts = self.get_option_chain(symbol, expiry_date)
 
         if calls.empty or puts.empty:
+            logger.warning(f"{symbol} 期权链为空")
             return None
 
         # 找最接近平值的行权价
         calls['strike_diff'] = abs(calls['strike'] - underlying_price)
-        atm_call = calls.loc[calls['strike_diff'].idxmin()]
 
+        # 检查 calls 是否为空
+        if calls.empty:
+            logger.warning(f"{symbol} 看涨期权数据为空")
+            return None
+
+        atm_call = calls.loc[calls['strike_diff'].idxmin()]
         atm_strike = atm_call['strike']
 
-        # 找对应的put
-        atm_put = puts[puts['strike'] == atm_strike].iloc[0] if not puts[puts['strike'] == atm_strike].empty else None
-
-        if atm_put is None:
+        # 找对应的 put（优化：避免重复计算）
+        matching_puts = puts[puts['strike'] == atm_strike]
+        if matching_puts.empty:
+            logger.warning(f"{symbol} 未找到行权价 {atm_strike} 的看跌期权")
             return None
+
+        atm_put = matching_puts.iloc[0]
 
         return {
             'call_symbol': atm_call['contractSymbol'],

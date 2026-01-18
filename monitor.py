@@ -8,8 +8,13 @@ import logging
 import time
 import signal
 import sys
-from datetime import datetime, timedelta
+import warnings
+from datetime import datetime
 from typing import Optional
+
+# 过滤akshare的非交易日警告
+warnings.filterwarnings('ignore', message='.*非交易日.*')
+warnings.filterwarnings('ignore', module='akshare.option.option_commodity')
 
 # 项目模块
 from config import (
@@ -77,6 +82,7 @@ class ArbitrageMonitor:
         self.last_check_time: Optional[datetime] = None
         self.signal_count = 0
         self.error_count = 0
+        self._summary_sent_today = False  # 防止重复发送每日汇总
 
         # 每日统计
         self.daily_stats = {
@@ -89,7 +95,9 @@ class ArbitrageMonitor:
 
         # 注册信号处理
         signal.signal(signal.SIGINT, self._signal_handler)
-        signal.signal(signal.SIGTERM, self._signal_handler)
+        # Windows 不支持 SIGTERM，需要条件判断
+        if sys.platform != 'win32':
+            signal.signal(signal.SIGTERM, self._signal_handler)
 
         logger.info("套利监控系统初始化完成")
 
@@ -103,6 +111,10 @@ class ArbitrageMonitor:
         now = datetime.now()
         current_time = now.strftime('%H:%M')
 
+        # 周末不交易
+        if now.weekday() >= 5:  # 周六、周日
+            return False
+
         # 日盘时段
         day_start = SHFE_TRADING_HOURS['day']['start']
         day_end = SHFE_TRADING_HOURS['day']['end']
@@ -113,11 +125,12 @@ class ArbitrageMonitor:
 
         # 检查是否在交易时段
         in_day_session = day_start <= current_time <= day_end
-        in_night_session = current_time >= night_start or current_time <= night_end
 
-        # 周末不交易
-        if now.weekday() >= 5:  # 周六、周日
-            return False
+        # 夜盘跨越午夜的情况
+        if night_start > night_end:  # 跨日（例如 21:00 到次日 01:00）
+            in_night_session = current_time >= night_start or current_time <= night_end
+        else:
+            in_night_session = night_start <= current_time <= night_end
 
         return in_day_session or in_night_session
 
@@ -138,11 +151,44 @@ class ArbitrageMonitor:
             cme_data = data.get('CME')
 
             if not shfe_data or not cme_data:
-                logger.warning("数据获取不完整")
+                error_msg = "【数据获取失败】"
+                if not shfe_data:
+                    error_msg += "沪铜数据缺失 "
+                if not cme_data:
+                    error_msg += "CME数据缺失 "
+                logger.error(error_msg)
+                self.error_count += 1
+                
+                # 发送告警（每5次错误发送一次，避免频繁通知）
+                if self.error_count % 5 == 1:
+                    self.notifier.send_error_message(
+                        f"{error_msg}\n"
+                        f"已连续失败{self.error_count}次\n"
+                        "请检查数据源连接"
+                    )
+                return None
+            
+            # 检查IV数据有效性
+            if shfe_data.atm_iv is None or cme_data.atm_iv is None:
+                error_msg = "【IV数据缺失】"
+                if shfe_data.atm_iv is None:
+                    error_msg += "沪铜IV缺失 "
+                if cme_data.atm_iv is None:
+                    error_msg += "CME IV缺失 "
+                logger.error(error_msg)
+                self.error_count += 1
+                
+                # 发送告警
+                if self.error_count % 5 == 1:
+                    self.notifier.send_error_message(
+                        f"{error_msg}\n"
+                        f"无法获取真实隐含波动率数据\n"
+                        f"已连续失败{self.error_count}次"
+                    )
                 return None
 
             # 分析套利机会
-            signal = self.analyzer.analyze(shfe_data, cme_data)
+            arb_signal = self.analyzer.analyze(shfe_data, cme_data)
 
             result = {
                 'timestamp': datetime.now(),
@@ -151,21 +197,21 @@ class ArbitrageMonitor:
                 'shfe_iv': shfe_data.atm_iv,
                 'cme_iv': cme_data.atm_iv,
                 'iv_diff': cme_data.atm_iv - shfe_data.atm_iv,
-                'signal': signal
+                'signal': arb_signal
             }
 
             # 如果有开仓信号，发送通知
-            if signal:
-                logger.info(f"发现套利信号: IV差={signal.iv_diff:.2f}%, 强度={signal.strength.value}")
+            if arb_signal:
+                logger.info(f"发现套利信号: IV差={arb_signal.iv_diff:.2f}%, 强度={arb_signal.strength.value}")
 
                 # 发送 Telegram 通知
-                if self.notifier.send_signal(signal):
+                if self.notifier.send_signal(arb_signal):
                     self.signal_count += 1
-                    self._update_daily_stats(signal)
+                    self._update_daily_stats(arb_signal)
                     logger.info("开仓通知发送成功")
 
                     # 记录持仓
-                    self.position_tracker.add_position(signal)
+                    self.position_tracker.add_position(arb_signal)
                     logger.info("持仓已记录")
                 else:
                     logger.error("通知发送失败")
@@ -187,6 +233,7 @@ class ArbitrageMonitor:
                     logger.error("平仓通知发送失败")
 
             self.last_check_time = datetime.now()
+            self.error_count = 0  # 成功检查后重置错误计数
             return result
 
         except Exception as e:
@@ -199,7 +246,7 @@ class ArbitrageMonitor:
 
             return None
 
-    def _update_daily_stats(self, signal):
+    def _update_daily_stats(self, arb_signal):
         """更新每日统计"""
         today = datetime.now().strftime('%Y-%m-%d')
 
@@ -212,12 +259,13 @@ class ArbitrageMonitor:
                 'medium_count': 0,
                 'weak_count': 0
             }
+            self._summary_sent_today = False  # 新的一天重置汇总标记
 
-        self.daily_stats['signals'].append(signal)
+        self.daily_stats['signals'].append(arb_signal)
 
-        if signal.strength == SignalStrength.STRONG:
+        if arb_signal.strength == SignalStrength.STRONG:
             self.daily_stats['strong_count'] += 1
-        elif signal.strength == SignalStrength.MEDIUM:
+        elif arb_signal.strength == SignalStrength.MEDIUM:
             self.daily_stats['medium_count'] += 1
         else:
             self.daily_stats['weak_count'] += 1
@@ -238,10 +286,15 @@ class ArbitrageMonitor:
                 else:
                     logger.debug("当前非交易时段，跳过检查")
 
-                # 发送每日汇总（每天 15:30）
+                # 发送每日汇总（每天 15:30，只发送一次）
                 now = datetime.now()
                 if now.hour == 15 and now.minute == 30:
-                    self._send_daily_summary()
+                    if not self._summary_sent_today:
+                        self._send_daily_summary()
+                        self._summary_sent_today = True
+                elif now.hour != 15 or now.minute != 30:
+                    # 离开 15:30 时段后重置标记
+                    self._summary_sent_today = False
 
                 # 等待下一次检查
                 logger.debug(f"等待 {MONITOR_INTERVAL} 秒后进行下一次检查...")

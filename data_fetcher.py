@@ -80,26 +80,9 @@ class SHFEDataFetcher:
             underlying_price = float(futures_df.iloc[-1]['close'])
 
             # 获取期权行情
-            # akshare 提供 option_shfe_daily 等接口
-            options_df = self.ak.option_cffex_hs300_spot_sina(symbol="沪铜")
-
-            if options_df is None or options_df.empty:
-                # 尝试备用方法
-                return self._get_from_eastmoney(underlying_price)
-
-            options = self._parse_options_data(options_df, underlying_price)
-            atm_call_iv, atm_put_iv = self._find_atm_iv(options, underlying_price)
-
-            return MarketSnapshot(
-                market="SHFE",
-                underlying_symbol="CU",
-                underlying_price=underlying_price,
-                atm_call_iv=atm_call_iv,
-                atm_put_iv=atm_put_iv,
-                atm_iv=(atm_call_iv + atm_put_iv) / 2,
-                options=options,
-                timestamp=datetime.now()
-            )
+            # 注意：akshare 对于商品期权的接口较为有限
+            # 这里使用备用方法直接从东方财富获取
+            return self._get_from_eastmoney(underlying_price)
 
         except Exception as e:
             logger.error(f"获取沪铜期权数据失败: {e}")
@@ -107,9 +90,9 @@ class SHFEDataFetcher:
 
     def _get_from_eastmoney(self, underlying_price: float) -> Optional[MarketSnapshot]:
         """从东方财富获取数据（备用）"""
-        try:
-            import requests
+        import requests
 
+        try:
             # 东方财富期权接口
             url = "https://push2.eastmoney.com/api/qt/optioncode/get"
             params = {
@@ -118,44 +101,45 @@ class SHFEDataFetcher:
                 "fields": "f1,f2,f3,f4,f5,f6,f7,f12,f13,f14,f152"
             }
 
-            resp = requests.get(url, params=params, timeout=10)
-            data = resp.json()
+            with requests.Session() as session:
+                resp = session.get(url, params=params, timeout=10)
+                data = resp.json()
 
-            if data.get("data"):
-                # 解析数据...
-                logger.info("从东方财富获取数据成功")
-                # 此处需要根据实际API返回格式解析
+                if data.get("data"):
+                    # 解析数据...
+                    logger.info("从东方财富获取数据成功")
+                    # 此处需要根据实际API返回格式解析
 
             return None
 
-        except Exception as e:
+        except requests.exceptions.RequestException as e:
             logger.error(f"东方财富数据获取失败: {e}")
+            return None
+        except Exception as e:
+            logger.error(f"东方财富数据解析失败: {e}")
             return None
 
     def _get_fallback_data(self) -> Optional[MarketSnapshot]:
-        """返回模拟/缓存数据用于测试"""
-        logger.warning("使用模拟数据")
-        return MarketSnapshot(
-            market="SHFE",
-            underlying_symbol="CU",
-            underlying_price=103390.0,
-            atm_call_iv=20.5,
-            atm_put_iv=21.0,
-            atm_iv=20.75,
-            options=[],
-            timestamp=datetime.now()
-        )
+        """无法获取真实数据时返回None，不使用模拟数据"""
+        logger.error("【数据获取失败】无法获取沪铜真实数据，请检查数据源")
+        return None
 
     def _parse_options_data(self, df, underlying_price: float) -> List[OptionData]:
-        """解析期权数据"""
-        options = []
-        # 根据实际数据格式解析
-        return options
+        """
+        解析期权数据
+
+        注意：此方法当前未实现，返回空列表
+        未来需要根据实际数据源的格式进行解析
+        """
+        # TODO: 根据实际数据格式解析
+        logger.warning("_parse_options_data 方法未实现，返回空列表")
+        return []
 
     def _find_atm_iv(self, options: List[OptionData], underlying_price: float):
         """找到平值期权的IV"""
         if not options:
-            return 20.0, 20.0  # 默认值
+            logger.error("【数据不可用】期权列表为空，无法获取真实IV")
+            return None, None  # 返回None而不是默认值
 
         # 找到最接近标的价格的行权价
         atm_strike = min(
@@ -173,7 +157,14 @@ class SHFEDataFetcher:
                 else:
                     atm_put_iv = opt.implied_volatility
 
-        return atm_call_iv or 20.0, atm_put_iv or 20.0
+        # 如果未找到，记录错误
+        if atm_call_iv is None:
+            logger.error(f"【数据不可用】未找到行权价 {atm_strike} 的看涨期权IV")
+        if atm_put_iv is None:
+            logger.error(f"【数据不可用】未找到行权价 {atm_strike} 的看跌期权IV")
+
+        # 返回None而不是默认值，确保不使用估算数据
+        return atm_call_iv, atm_put_iv
 
 
 class CMEDataFetcher:
@@ -216,8 +207,8 @@ class CMEDataFetcher:
 
             # 获取期权链
             options = []
-            atm_call_iv = 33.0  # CME 铜期权 IV 通常较高
-            atm_put_iv = 33.0
+            atm_call_iv = None  # 不使用默认估算值
+            atm_put_iv = None
 
             try:
                 # 尝试获取期权链
@@ -242,8 +233,13 @@ class CMEDataFetcher:
                     options = self._parse_option_chain(calls, puts, underlying_price, nearest_expiry)
 
             except Exception as e:
-                logger.warning(f"获取CME期权链失败: {e}")
+                logger.error(f"【数据获取失败】获取CME期权链失败: {e}")
 
+            # 检查是否获取到有效的IV数据
+            if atm_call_iv is None or atm_put_iv is None:
+                logger.error("【数据不可用】CME期权IV数据缺失，无法提供真实数据")
+                return None
+            
             return MarketSnapshot(
                 market="CME",
                 underlying_symbol="HG",
@@ -275,8 +271,8 @@ class CMEDataFetcher:
                 last=row.get('lastPrice', 0),
                 implied_volatility=row.get('impliedVolatility', 0) * 100,
                 delta=None,
-                volume=int(row.get('volume', 0) or 0),
-                open_interest=int(row.get('openInterest', 0) or 0)
+                volume=int(row.get('volume') or 0),
+                open_interest=int(row.get('openInterest') or 0)
             ))
 
         for _, row in puts.iterrows():
@@ -291,25 +287,16 @@ class CMEDataFetcher:
                 last=row.get('lastPrice', 0),
                 implied_volatility=row.get('impliedVolatility', 0) * 100,
                 delta=None,
-                volume=int(row.get('volume', 0) or 0),
-                open_interest=int(row.get('openInterest', 0) or 0)
+                volume=int(row.get('volume') or 0),
+                open_interest=int(row.get('openInterest') or 0)
             ))
 
         return options
 
     def _get_fallback_data(self) -> Optional[MarketSnapshot]:
-        """返回模拟数据用于测试"""
-        logger.warning("CME 使用模拟数据")
-        return MarketSnapshot(
-            market="CME",
-            underlying_symbol="HG",
-            underlying_price=4.70,  # 美元/磅
-            atm_call_iv=33.14,
-            atm_put_iv=32.50,
-            atm_iv=32.82,
-            options=[],
-            timestamp=datetime.now()
-        )
+        """无法获取真实数据时返回None，不使用模拟数据"""
+        logger.error("【数据获取失败】无法获取CME真实数据，请检查数据源")
+        return None
 
 
 class DataFetcherManager:

@@ -327,3 +327,1259 @@
 2026-01-18 21:08:43,693 - __main__ - INFO - 发送 原油 套利信号...
 2026-01-18 21:08:44,734 - telegram_notifier - INFO - Telegram 消息发送成功
 2026-01-18 21:08:44,735 - __main__ - INFO - 原油 通知发送成功
+2026-01-18 22:11:27,399 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 22:11:27,907 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 22:11:28,001 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 22:11:28,001 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 22:11:28,001 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 22:11:28,001 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 22:11:28,001 - __main__ - INFO - ==================================================
+2026-01-18 22:11:28,001 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 22:11:28,001 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 22:11:28,408 - multi_data_fetcher - ERROR - 获取铜国内数据失败: 'close'
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\multi_data_fetcher.py", line 92, in fetch_domestic_data
+    price = float(df.iloc[-1]['close'])
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1007, in __getitem__
+    return self._get_value(key)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1116, in _get_value
+    loc = self.index.get_loc(label)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'close'
+2026-01-18 22:11:29,333 - multi_data_fetcher - WARNING - copper 境外IV获取失败，使用默认值 32.82%
+2026-01-18 22:11:29,333 - multi_data_fetcher - INFO -   铜: 国内IV=20.75% 境外IV=32.82% 差值=+12.07%
+2026-01-18 22:11:29,333 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 22:11:29,506 - multi_data_fetcher - ERROR - 获取黄金国内数据失败: 'close'
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\multi_data_fetcher.py", line 92, in fetch_domestic_data
+    price = float(df.iloc[-1]['close'])
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1007, in __getitem__
+    return self._get_value(key)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1116, in _get_value
+    loc = self.index.get_loc(label)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'close'
+2026-01-18 22:11:29,781 - multi_data_fetcher - WARNING - gold 境外IV获取失败，使用默认值 18.5%
+2026-01-18 22:11:29,781 - multi_data_fetcher - INFO -   黄金: 国内IV=15.50% 境外IV=18.50% 差值=+3.00%
+2026-01-18 22:11:29,781 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 22:11:29,905 - multi_data_fetcher - ERROR - 获取白银国内数据失败: 'close'
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\multi_data_fetcher.py", line 92, in fetch_domestic_data
+    price = float(df.iloc[-1]['close'])
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1007, in __getitem__
+    return self._get_value(key)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1116, in _get_value
+    loc = self.index.get_loc(label)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'close'
+2026-01-18 22:11:30,178 - multi_data_fetcher - WARNING - silver 境外IV获取失败，使用默认值 32.0%
+2026-01-18 22:11:30,178 - multi_data_fetcher - INFO -   白银: 国内IV=25.00% 境外IV=32.00% 差值=+7.00%
+2026-01-18 22:11:30,178 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 22:11:30,271 - multi_data_fetcher - ERROR - 获取原油国内数据失败: 'close'
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\multi_data_fetcher.py", line 92, in fetch_domestic_data
+    price = float(df.iloc[-1]['close'])
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1007, in __getitem__
+    return self._get_value(key)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1116, in _get_value
+    loc = self.index.get_loc(label)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'close'
+2026-01-18 22:11:30,547 - multi_data_fetcher - WARNING - crude_oil 境外IV获取失败，使用默认值 38.0%
+2026-01-18 22:11:30,547 - multi_data_fetcher - INFO -   原油: 国内IV=30.00% 境外IV=38.00% 差值=+8.00%
+2026-01-18 22:11:31,473 - option_contracts - INFO - copper 标的价格 103390.0, 选择行权价 104000.0, 差值 610.00
+2026-01-18 22:11:31,473 - multi_analyzer - INFO - 铜 国内期权: cu2603C104000/cu2603P104000 行权价 104000.0
+2026-01-18 22:11:31,607 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 22:11:31,607 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 22:11:31,608 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，使用估算
+2026-01-18 22:11:31,608 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=12.07%
+2026-01-18 22:11:31,608 - multi_analyzer - INFO - 黄金: IV差 3.00% 未达开仓阈值 6.0%
+2026-01-18 22:11:31,608 - multi_analyzer - INFO - 白银: IV差 7.00% 未达开仓阈值 8.0%
+2026-01-18 22:11:32,964 - option_contracts - ERROR - 获取crude_oil 2603期权链失败: '原油期权'
+2026-01-18 22:11:32,965 - option_contracts - WARNING - crude_oil 2603 无可用期权合约
+2026-01-18 22:11:32,965 - multi_analyzer - WARNING - 原油 未找到国内ATM期权，使用估算
+2026-01-18 22:11:33,232 - option_contracts - WARNING - CL=F 无可用期权
+2026-01-18 22:11:33,233 - option_contracts - WARNING - CL=F 期权链为空
+2026-01-18 22:11:33,233 - multi_analyzer - WARNING - 原油 未找到境外ATM期权，使用估算
+2026-01-18 22:11:33,233 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=8.00%
+2026-01-18 22:11:33,233 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 22:11:34,596 - telegram_notifier - ERROR - Telegram API 返回错误: {'ok': False, 'error_code': 400, 'description': 'Bad Request: chat not found'}
+2026-01-18 22:11:36,000 - __main__ - ERROR - 铜 通知发送失败
+2026-01-18 22:11:36,000 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 22:11:37,314 - telegram_notifier - ERROR - Telegram API 返回错误: {'ok': False, 'error_code': 400, 'description': 'Bad Request: chat not found'}
+2026-01-18 22:11:38,825 - __main__ - ERROR - 原油 通知发送失败
+2026-01-18 22:11:54,230 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 22:11:54,572 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 22:11:54,629 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 22:11:54,630 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 22:11:54,630 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 22:11:54,630 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 22:11:54,630 - __main__ - INFO - ==================================================
+2026-01-18 22:11:54,630 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 22:11:54,630 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 22:11:54,824 - multi_data_fetcher - ERROR - 获取铜国内数据失败: 'close'
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\multi_data_fetcher.py", line 92, in fetch_domestic_data
+    price = float(df.iloc[-1]['close'])
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1007, in __getitem__
+    return self._get_value(key)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1116, in _get_value
+    loc = self.index.get_loc(label)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'close'
+2026-01-18 22:11:55,583 - multi_data_fetcher - WARNING - copper 境外IV获取失败，使用默认值 32.82%
+2026-01-18 22:11:55,583 - multi_data_fetcher - INFO -   铜: 国内IV=20.75% 境外IV=32.82% 差值=+12.07%
+2026-01-18 22:11:55,583 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 22:11:55,804 - multi_data_fetcher - ERROR - 获取黄金国内数据失败: 'close'
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\multi_data_fetcher.py", line 92, in fetch_domestic_data
+    price = float(df.iloc[-1]['close'])
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1007, in __getitem__
+    return self._get_value(key)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1116, in _get_value
+    loc = self.index.get_loc(label)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'close'
+2026-01-18 22:11:56,085 - multi_data_fetcher - WARNING - gold 境外IV获取失败，使用默认值 18.5%
+2026-01-18 22:11:56,085 - multi_data_fetcher - INFO -   黄金: 国内IV=15.50% 境外IV=18.50% 差值=+3.00%
+2026-01-18 22:11:56,085 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 22:11:56,234 - multi_data_fetcher - ERROR - 获取白银国内数据失败: 'close'
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\multi_data_fetcher.py", line 92, in fetch_domestic_data
+    price = float(df.iloc[-1]['close'])
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1007, in __getitem__
+    return self._get_value(key)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1116, in _get_value
+    loc = self.index.get_loc(label)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'close'
+2026-01-18 22:11:56,517 - multi_data_fetcher - WARNING - silver 境外IV获取失败，使用默认值 32.0%
+2026-01-18 22:11:56,518 - multi_data_fetcher - INFO -   白银: 国内IV=25.00% 境外IV=32.00% 差值=+7.00%
+2026-01-18 22:11:56,518 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 22:11:56,614 - multi_data_fetcher - ERROR - 获取原油国内数据失败: 'close'
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\code\quant\options_hedging\multi_data_fetcher.py", line 92, in fetch_domestic_data
+    price = float(df.iloc[-1]['close'])
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1007, in __getitem__
+    return self._get_value(key)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\series.py", line 1116, in _get_value
+    loc = self.index.get_loc(label)
+  File "D:\code\quant\options_hedging\.venv\lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'close'
+2026-01-18 22:11:56,887 - multi_data_fetcher - WARNING - crude_oil 境外IV获取失败，使用默认值 38.0%
+2026-01-18 22:11:56,888 - multi_data_fetcher - INFO -   原油: 国内IV=30.00% 境外IV=38.00% 差值=+8.00%
+2026-01-18 22:11:57,152 - option_contracts - INFO - copper 标的价格 103390.0, 选择行权价 104000.0, 差值 610.00
+2026-01-18 22:11:57,152 - multi_analyzer - INFO - 铜 国内期权: cu2603C104000/cu2603P104000 行权价 104000.0
+2026-01-18 22:11:57,284 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 22:11:57,285 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 22:11:57,285 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，使用估算
+2026-01-18 22:11:57,285 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=12.07%
+2026-01-18 22:11:57,285 - multi_analyzer - INFO - 黄金: IV差 3.00% 未达开仓阈值 6.0%
+2026-01-18 22:11:57,285 - multi_analyzer - INFO - 白银: IV差 7.00% 未达开仓阈值 8.0%
+2026-01-18 22:11:57,727 - option_contracts - ERROR - 获取crude_oil 2603期权链失败: '原油期权'
+2026-01-18 22:11:57,727 - option_contracts - WARNING - crude_oil 2603 无可用期权合约
+2026-01-18 22:11:57,728 - multi_analyzer - WARNING - 原油 未找到国内ATM期权，使用估算
+2026-01-18 22:11:57,783 - option_contracts - WARNING - CL=F 无可用期权
+2026-01-18 22:11:57,784 - option_contracts - WARNING - CL=F 期权链为空
+2026-01-18 22:11:57,784 - multi_analyzer - WARNING - 原油 未找到境外ATM期权，使用估算
+2026-01-18 22:11:57,784 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=8.00%
+2026-01-18 22:11:57,784 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 22:11:59,199 - telegram_notifier - ERROR - Telegram API 返回错误: {'ok': False, 'error_code': 400, 'description': 'Bad Request: chat not found'}
+2026-01-18 22:12:00,533 - __main__ - ERROR - 铜 通知发送失败
+2026-01-18 22:12:00,533 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 22:12:01,891 - telegram_notifier - ERROR - Telegram API 返回错误: {'ok': False, 'error_code': 400, 'description': 'Bad Request: chat not found'}
+2026-01-18 22:12:03,236 - __main__ - ERROR - 原油 通知发送失败
+2026-01-18 22:13:04,752 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 22:13:05,098 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 22:13:05,156 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 22:13:05,156 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 22:13:05,156 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 22:13:05,156 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 22:13:05,156 - __main__ - INFO - ==================================================
+2026-01-18 22:13:05,156 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 22:13:05,156 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 22:13:06,229 - multi_data_fetcher - WARNING - copper 境外IV获取失败，使用默认值 32.82%
+2026-01-18 22:13:06,229 - multi_data_fetcher - INFO -   铜: 国内IV=20.75% 境外IV=32.82% 差值=+12.07%
+2026-01-18 22:13:06,229 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 22:13:06,668 - multi_data_fetcher - WARNING - gold 境外IV获取失败，使用默认值 18.5%
+2026-01-18 22:13:06,668 - multi_data_fetcher - INFO -   黄金: 国内IV=15.50% 境外IV=18.50% 差值=+3.00%
+2026-01-18 22:13:06,668 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 22:13:07,069 - multi_data_fetcher - WARNING - silver 境外IV获取失败，使用默认值 32.0%
+2026-01-18 22:13:07,070 - multi_data_fetcher - INFO -   白银: 国内IV=25.00% 境外IV=32.00% 差值=+7.00%
+2026-01-18 22:13:07,070 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 22:13:07,423 - multi_data_fetcher - WARNING - crude_oil 境外IV获取失败，使用默认值 38.0%
+2026-01-18 22:13:07,423 - multi_data_fetcher - INFO -   原油: 国内IV=30.00% 境外IV=38.00% 差值=+8.00%
+2026-01-18 22:13:08,167 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 22:13:08,167 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 22:13:08,305 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 22:13:08,305 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 22:13:08,305 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，使用估算
+2026-01-18 22:13:08,305 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=12.07%
+2026-01-18 22:13:08,305 - multi_analyzer - INFO - 黄金: IV差 3.00% 未达开仓阈值 6.0%
+2026-01-18 22:13:08,306 - multi_analyzer - INFO - 白银: IV差 7.00% 未达开仓阈值 8.0%
+2026-01-18 22:13:09,768 - option_contracts - ERROR - 获取crude_oil 2603期权链失败: '原油期权'
+2026-01-18 22:13:09,768 - option_contracts - WARNING - crude_oil 2603 无可用期权合约
+2026-01-18 22:13:09,769 - multi_analyzer - WARNING - 原油 未找到国内ATM期权，使用估算
+2026-01-18 22:13:09,907 - option_contracts - WARNING - CL=F 无可用期权
+2026-01-18 22:13:09,907 - option_contracts - WARNING - CL=F 期权链为空
+2026-01-18 22:13:09,907 - multi_analyzer - WARNING - 原油 未找到境外ATM期权，使用估算
+2026-01-18 22:13:09,908 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=8.00%
+2026-01-18 22:13:09,908 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 22:13:10,889 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:13:10,890 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 22:13:10,890 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 22:13:11,880 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:13:11,881 - __main__ - INFO - 原油 通知发送成功
+2026-01-18 22:53:56,667 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 22:53:57,232 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 22:53:57,327 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 22:53:57,327 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 22:53:57,327 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 22:53:57,327 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 22:53:57,328 - __main__ - INFO - ==================================================
+2026-01-18 22:53:57,328 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 22:53:57,328 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 22:53:58,160 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 22:53:59,317 - multi_data_fetcher - WARNING - copper 无可用期权到期日
+2026-01-18 22:53:59,318 - multi_data_fetcher - WARNING - [WARN] copper 境外期权IV获取失败，使用默认值: 32.82%
+2026-01-18 22:53:59,318 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 22:53:59,318 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=32.82% 差值=+23.33%
+2026-01-18 22:53:59,318 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 22:54:00,972 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 22:54:01,252 - multi_data_fetcher - WARNING - gold 无可用期权到期日
+2026-01-18 22:54:01,252 - multi_data_fetcher - WARNING - [WARN] gold 境外期权IV获取失败，使用默认值: 18.50%
+2026-01-18 22:54:01,252 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 22:54:01,252 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=18.50% 差值=+10.49%
+2026-01-18 22:54:01,252 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 22:54:02,503 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 22:54:02,920 - multi_data_fetcher - WARNING - silver 无可用期权到期日
+2026-01-18 22:54:02,921 - multi_data_fetcher - WARNING - [WARN] silver 境外期权IV获取失败，使用默认值: 32.00%
+2026-01-18 22:54:02,921 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 22:54:02,921 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=32.00% 差值=-10.39%
+2026-01-18 22:54:02,921 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 22:54:03,191 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 22:54:03,191 - multi_data_fetcher - WARNING - [WARN] crude_oil 国内期权IV使用默认值: 30.00%
+2026-01-18 22:54:03,472 - multi_data_fetcher - WARNING - crude_oil 无可用期权到期日
+2026-01-18 22:54:03,473 - multi_data_fetcher - WARNING - [WARN] crude_oil 境外期权IV获取失败，使用默认值: 38.00%
+2026-01-18 22:54:03,473 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 22:54:03,473 - multi_data_fetcher - INFO -   原油: 国内IV=30.00% 境外IV=38.00% 差值=+8.00%
+2026-01-18 22:54:04,097 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 22:54:04,098 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 22:54:04,237 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 22:54:04,238 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 22:54:04,238 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，使用估算
+2026-01-18 22:54:04,238 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=23.33%
+2026-01-18 22:54:04,392 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 22:54:04,392 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 22:54:04,533 - option_contracts - WARNING - GC=F 无可用期权
+2026-01-18 22:54:04,533 - option_contracts - WARNING - GC=F 期权链为空
+2026-01-18 22:54:04,533 - multi_analyzer - WARNING - 黄金 未找到境外ATM期权，使用估算
+2026-01-18 22:54:04,533 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=10.49%
+2026-01-18 22:54:05,988 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 22:54:05,988 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 22:54:06,124 - option_contracts - WARNING - SI=F 无可用期权
+2026-01-18 22:54:06,125 - option_contracts - WARNING - SI=F 期权链为空
+2026-01-18 22:54:06,125 - multi_analyzer - WARNING - 白银 未找到境外ATM期权，使用估算
+2026-01-18 22:54:06,125 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-10.39%
+2026-01-18 22:54:06,278 - option_contracts - ERROR - 获取crude_oil 2603期权链失败: '原油期权'
+2026-01-18 22:54:06,279 - option_contracts - WARNING - crude_oil 2603 无可用期权合约
+2026-01-18 22:54:06,279 - multi_analyzer - WARNING - 原油 未找到国内ATM期权，使用估算
+2026-01-18 22:54:06,417 - option_contracts - WARNING - CL=F 无可用期权
+2026-01-18 22:54:06,418 - option_contracts - WARNING - CL=F 期权链为空
+2026-01-18 22:54:06,418 - multi_analyzer - WARNING - 原油 未找到境外ATM期权，使用估算
+2026-01-18 22:54:06,418 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=8.00%
+2026-01-18 22:54:06,418 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 22:54:07,602 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:54:07,603 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 22:54:07,603 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 22:54:08,808 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:54:08,809 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 22:54:08,809 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 22:54:10,443 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:54:10,444 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 22:54:10,444 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 22:54:11,704 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:54:11,705 - __main__ - INFO - 原油 通知发送成功
+2026-01-18 22:58:41,385 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 22:58:42,019 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 22:58:42,130 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 22:58:42,130 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 22:58:42,130 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 22:58:42,130 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 22:58:42,130 - __main__ - INFO - ==================================================
+2026-01-18 22:58:42,130 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 22:58:42,130 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 22:58:43,209 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 22:58:44,597 - multi_data_fetcher - WARNING - copper 无可用期权到期日
+2026-01-18 22:58:44,597 - multi_data_fetcher - ERROR - [ERROR] 铜 境外期权IV无法获取真实数据
+2026-01-18 22:58:44,597 - multi_data_fetcher - WARNING - HG=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 22:58:45,262 - multi_data_fetcher - INFO - [OK] copper 境外期权IV从真实数据获取: 37.67%
+2026-01-18 22:58:45,262 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: CPER)
+2026-01-18 22:58:45,262 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=37.67% 差值=+28.18%
+2026-01-18 22:58:45,262 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 22:58:47,166 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 22:58:47,489 - multi_data_fetcher - WARNING - gold 无可用期权到期日
+2026-01-18 22:58:47,490 - multi_data_fetcher - ERROR - [ERROR] 黄金 境外期权IV无法获取真实数据
+2026-01-18 22:58:47,490 - multi_data_fetcher - WARNING - GC=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 22:58:48,222 - multi_data_fetcher - INFO - [OK] gold 境外期权IV从真实数据获取: 19.55%
+2026-01-18 22:58:48,222 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GLD)
+2026-01-18 22:58:48,222 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=19.55% 差值=+11.54%
+2026-01-18 22:58:48,223 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 22:58:49,389 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 22:58:49,790 - multi_data_fetcher - WARNING - silver 无可用期权到期日
+2026-01-18 22:58:49,791 - multi_data_fetcher - ERROR - [ERROR] 白银 境外期权IV无法获取真实数据
+2026-01-18 22:58:49,791 - multi_data_fetcher - WARNING - SI=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 22:58:50,525 - multi_data_fetcher - INFO - [OK] silver 境外期权IV从真实数据获取: 79.61%
+2026-01-18 22:58:50,525 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SLV)
+2026-01-18 22:58:50,525 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=79.61% 差值=+37.23%
+2026-01-18 22:58:50,525 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 22:58:50,786 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 22:58:50,786 - multi_data_fetcher - ERROR - [ERROR] 原油 国内期权IV无法获取真实数据
+2026-01-18 22:58:50,787 - multi_data_fetcher - ERROR - 原油 无法获取真实国内期权IV数据
+2026-01-18 22:58:51,105 - multi_data_fetcher - WARNING - crude_oil 无可用期权到期日
+2026-01-18 22:58:51,105 - multi_data_fetcher - ERROR - [ERROR] 原油 境外期权IV无法获取真实数据
+2026-01-18 22:58:51,105 - multi_data_fetcher - WARNING - CL=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 22:58:51,432 - multi_data_fetcher - WARNING - crude_oil 无可用期权到期日
+2026-01-18 22:58:51,433 - multi_data_fetcher - ERROR - [ERROR] 原油 境外期权IV无法获取真实数据
+2026-01-18 22:58:51,433 - multi_data_fetcher - WARNING - BZ=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 22:58:51,433 - multi_data_fetcher - ERROR - crude_oil 所有ticker符号都无法获取真实数据
+2026-01-18 22:58:51,433 - multi_data_fetcher - ERROR - 原油 境外数据获取失败，无真实数据可用
+2026-01-18 22:58:51,433 - multi_data_fetcher - INFO -   原油: 国内IV=N/A 境外IV=N/A 差值=N/A
+2026-01-18 22:58:51,564 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 22:58:51,564 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 22:58:51,730 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 22:58:51,731 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 22:58:51,731 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，无法提供真实合约
+2026-01-18 22:58:51,731 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=28.18%
+2026-01-18 22:58:52,260 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 22:58:52,261 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 22:58:52,430 - option_contracts - WARNING - GC=F 无可用期权
+2026-01-18 22:58:52,430 - option_contracts - WARNING - GC=F 期权链为空
+2026-01-18 22:58:52,430 - multi_analyzer - WARNING - 黄金 未找到境外ATM期权，无法提供真实合约
+2026-01-18 22:58:52,430 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=11.54%
+2026-01-18 22:58:52,641 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 22:58:52,641 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 22:58:52,798 - option_contracts - WARNING - SI=F 无可用期权
+2026-01-18 22:58:52,798 - option_contracts - WARNING - SI=F 期权链为空
+2026-01-18 22:58:52,798 - multi_analyzer - WARNING - 白银 未找到境外ATM期权，无法提供真实合约
+2026-01-18 22:58:52,798 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=37.23%
+2026-01-18 22:58:52,798 - multi_analyzer - WARNING - 原油 数据不完整，跳过分析
+2026-01-18 22:58:52,798 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 22:58:54,047 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:58:54,047 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 22:58:54,047 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 22:58:55,254 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:58:55,255 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 22:58:55,255 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 22:58:56,343 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 22:58:56,344 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:02:02,857 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:02:03,207 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:02:03,267 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:02:03,267 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:02:03,267 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:02:03,268 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:02:03,268 - __main__ - INFO - ==================================================
+2026-01-18 23:02:03,268 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:02:03,268 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:02:04,054 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:02:05,158 - multi_data_fetcher - WARNING - copper 无可用期权到期日
+2026-01-18 23:02:05,158 - multi_data_fetcher - ERROR - [ERROR] 铜 境外期权IV无法获取真实数据
+2026-01-18 23:02:05,158 - multi_data_fetcher - WARNING - HG=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 23:02:05,658 - multi_data_fetcher - INFO - [OK] copper 境外期权IV从真实数据获取: 37.67%
+2026-01-18 23:02:05,658 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: CPER)
+2026-01-18 23:02:05,658 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=37.67% 差值=+28.18%
+2026-01-18 23:02:05,659 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:02:07,596 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:02:07,901 - multi_data_fetcher - WARNING - gold 无可用期权到期日
+2026-01-18 23:02:07,901 - multi_data_fetcher - ERROR - [ERROR] 黄金 境外期权IV无法获取真实数据
+2026-01-18 23:02:07,902 - multi_data_fetcher - WARNING - GC=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 23:02:08,446 - multi_data_fetcher - INFO - [OK] gold 境外期权IV从真实数据获取: 19.55%
+2026-01-18 23:02:08,447 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GLD)
+2026-01-18 23:02:08,447 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=19.55% 差值=+11.54%
+2026-01-18 23:02:08,447 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:02:09,443 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:02:09,747 - multi_data_fetcher - WARNING - silver 无可用期权到期日
+2026-01-18 23:02:09,747 - multi_data_fetcher - ERROR - [ERROR] 白银 境外期权IV无法获取真实数据
+2026-01-18 23:02:09,747 - multi_data_fetcher - WARNING - SI=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 23:02:10,288 - multi_data_fetcher - INFO - [OK] silver 境外期权IV从真实数据获取: 79.61%
+2026-01-18 23:02:10,288 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SLV)
+2026-01-18 23:02:10,288 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=79.61% 差值=+37.23%
+2026-01-18 23:02:10,288 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:02:10,559 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 23:02:10,560 - multi_data_fetcher - ERROR - [ERROR] 原油 国内期权IV无法获取真实数据
+2026-01-18 23:02:10,560 - multi_data_fetcher - ERROR - 原油 无法获取真实国内期权IV数据
+2026-01-18 23:02:10,869 - multi_data_fetcher - WARNING - crude_oil 无可用期权到期日
+2026-01-18 23:02:10,870 - multi_data_fetcher - ERROR - [ERROR] 原油 境外期权IV无法获取真实数据
+2026-01-18 23:02:10,870 - multi_data_fetcher - WARNING - CL=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 23:02:11,309 - multi_data_fetcher - WARNING - crude_oil 无可用期权到期日
+2026-01-18 23:02:11,309 - multi_data_fetcher - ERROR - [ERROR] 原油 境外期权IV无法获取真实数据
+2026-01-18 23:02:11,309 - multi_data_fetcher - WARNING - BZ=F 无法获取真实期权IV，尝试下一个ticker
+2026-01-18 23:02:11,310 - multi_data_fetcher - ERROR - crude_oil 所有ticker符号都无法获取真实数据
+2026-01-18 23:02:11,310 - multi_data_fetcher - ERROR - 原油 境外数据获取失败，无真实数据可用
+2026-01-18 23:02:11,310 - multi_data_fetcher - INFO -   原油: 国内IV=N/A 境外IV=N/A 差值=N/A
+2026-01-18 23:02:11,583 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:02:11,583 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:02:11,733 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 23:02:11,733 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 23:02:11,734 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:02:11,734 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=28.18%
+2026-01-18 23:02:11,943 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:02:11,943 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:02:12,227 - option_contracts - WARNING - GC=F 无可用期权
+2026-01-18 23:02:12,228 - option_contracts - WARNING - GC=F 期权链为空
+2026-01-18 23:02:12,228 - multi_analyzer - WARNING - 黄金 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:02:12,228 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=11.54%
+2026-01-18 23:02:12,435 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:02:12,435 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:02:12,590 - option_contracts - WARNING - SI=F 无可用期权
+2026-01-18 23:02:12,591 - option_contracts - WARNING - SI=F 期权链为空
+2026-01-18 23:02:12,591 - multi_analyzer - WARNING - 白银 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:02:12,591 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=37.23%
+2026-01-18 23:02:12,591 - multi_analyzer - WARNING - 原油 数据不完整，跳过分析
+2026-01-18 23:02:12,591 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:02:13,923 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:02:13,924 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:02:13,924 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:02:15,082 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:02:15,082 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:02:15,083 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:02:16,310 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:02:16,311 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:05:29,878 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:05:30,239 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:05:30,315 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:05:30,315 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:05:30,315 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:05:30,315 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:05:30,316 - __main__ - INFO - ==================================================
+2026-01-18 23:05:30,316 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:05:30,316 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:05:31,304 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:05:32,985 - multi_data_fetcher - WARNING - copper 无可用期权到期日
+2026-01-18 23:05:32,986 - multi_data_fetcher - ERROR - [ERROR] 铜 境外期权IV无法获取真实数据
+2026-01-18 23:05:32,986 - multi_data_fetcher - WARNING - HG=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:05:33,153 - multi_data_fetcher - INFO - [HV] copper 使用30天历史波动率: 36.03%
+2026-01-18 23:05:33,153 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 23:05:33,153 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=36.03% 差值=+26.54%
+2026-01-18 23:05:33,153 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:05:34,229 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:05:34,545 - multi_data_fetcher - WARNING - gold 无可用期权到期日
+2026-01-18 23:05:34,545 - multi_data_fetcher - ERROR - [ERROR] 黄金 境外期权IV无法获取真实数据
+2026-01-18 23:05:34,545 - multi_data_fetcher - WARNING - GC=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:05:34,840 - multi_data_fetcher - INFO - [HV] gold 使用30天历史波动率: 20.80%
+2026-01-18 23:05:34,841 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 23:05:34,841 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=20.80% 差值=+12.78%
+2026-01-18 23:05:34,841 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:05:37,169 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:05:37,487 - multi_data_fetcher - WARNING - silver 无可用期权到期日
+2026-01-18 23:05:37,487 - multi_data_fetcher - ERROR - [ERROR] 白银 境外期权IV无法获取真实数据
+2026-01-18 23:05:37,487 - multi_data_fetcher - WARNING - SI=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:05:37,652 - multi_data_fetcher - INFO - [HV] silver 使用30天历史波动率: 76.84%
+2026-01-18 23:05:37,652 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 23:05:37,652 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=76.84% 差值=+34.46%
+2026-01-18 23:05:37,652 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:05:37,919 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 23:05:37,919 - multi_data_fetcher - WARNING - 原油 国内期权IV无法获取，尝试使用历史波动率
+2026-01-18 23:05:37,973 - multi_data_fetcher - INFO - [HV] 原油 使用30天国内历史波动率: 23.92%
+2026-01-18 23:05:38,290 - multi_data_fetcher - WARNING - crude_oil 无可用期权到期日
+2026-01-18 23:05:38,290 - multi_data_fetcher - ERROR - [ERROR] 原油 境外期权IV无法获取真实数据
+2026-01-18 23:05:38,290 - multi_data_fetcher - WARNING - CL=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:05:38,459 - multi_data_fetcher - INFO - [HV] crude_oil 使用30天历史波动率: 29.24%
+2026-01-18 23:05:38,459 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 23:05:38,459 - multi_data_fetcher - INFO -   原油: 国内IV=23.92% 境外IV=29.24% 差值=+5.33%
+2026-01-18 23:05:38,790 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:05:38,790 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:05:38,944 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 23:05:38,945 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 23:05:38,946 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:05:38,946 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=26.54%
+2026-01-18 23:05:40,974 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:05:40,974 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:05:41,129 - option_contracts - WARNING - GC=F 无可用期权
+2026-01-18 23:05:41,129 - option_contracts - WARNING - GC=F 期权链为空
+2026-01-18 23:05:41,129 - multi_analyzer - WARNING - 黄金 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:05:41,129 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=12.78%
+2026-01-18 23:05:41,415 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:05:41,415 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:05:41,569 - option_contracts - WARNING - SI=F 无可用期权
+2026-01-18 23:05:41,570 - option_contracts - WARNING - SI=F 期权链为空
+2026-01-18 23:05:41,570 - multi_analyzer - WARNING - 白银 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:05:41,570 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=34.46%
+2026-01-18 23:05:41,570 - multi_analyzer - INFO - 原油: IV差 5.33% 未达开仓阈值 8.0%
+2026-01-18 23:05:41,570 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:05:42,841 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:05:42,842 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:05:42,842 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:05:44,067 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:05:44,068 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:05:44,068 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:05:45,255 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:05:45,256 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:06:17,451 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:06:17,797 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:06:17,857 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:06:17,857 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:06:17,857 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:06:17,857 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:06:17,857 - __main__ - INFO - ==================================================
+2026-01-18 23:06:17,857 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:06:17,857 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:06:18,543 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:06:20,245 - multi_data_fetcher - WARNING - copper 无可用期权到期日
+2026-01-18 23:06:20,245 - multi_data_fetcher - ERROR - [ERROR] 铜 境外期权IV无法获取真实数据
+2026-01-18 23:06:20,245 - multi_data_fetcher - WARNING - HG=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:06:20,388 - multi_data_fetcher - INFO - [HV] copper 使用30天历史波动率: 36.03%
+2026-01-18 23:06:20,388 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 23:06:20,388 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=36.03% 差值=+26.54%
+2026-01-18 23:06:20,388 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:06:22,222 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:06:22,499 - multi_data_fetcher - WARNING - gold 无可用期权到期日
+2026-01-18 23:06:22,499 - multi_data_fetcher - ERROR - [ERROR] 黄金 境外期权IV无法获取真实数据
+2026-01-18 23:06:22,499 - multi_data_fetcher - WARNING - GC=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:06:22,640 - multi_data_fetcher - INFO - [HV] gold 使用30天历史波动率: 20.80%
+2026-01-18 23:06:22,640 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 23:06:22,640 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=20.80% 差值=+12.78%
+2026-01-18 23:06:22,640 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:06:23,251 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:06:23,522 - multi_data_fetcher - WARNING - silver 无可用期权到期日
+2026-01-18 23:06:23,522 - multi_data_fetcher - ERROR - [ERROR] 白银 境外期权IV无法获取真实数据
+2026-01-18 23:06:23,522 - multi_data_fetcher - WARNING - SI=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:06:23,662 - multi_data_fetcher - INFO - [HV] silver 使用30天历史波动率: 76.84%
+2026-01-18 23:06:23,662 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 23:06:23,662 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=76.84% 差值=+34.46%
+2026-01-18 23:06:23,662 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:06:25,125 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 23:06:25,126 - multi_data_fetcher - WARNING - 原油 国内期权IV无法获取，尝试使用历史波动率
+2026-01-18 23:06:25,237 - multi_data_fetcher - INFO - [HV] 原油 使用30天国内历史波动率: 23.92%
+2026-01-18 23:06:25,506 - multi_data_fetcher - WARNING - crude_oil 无可用期权到期日
+2026-01-18 23:06:25,507 - multi_data_fetcher - ERROR - [ERROR] 原油 境外期权IV无法获取真实数据
+2026-01-18 23:06:25,507 - multi_data_fetcher - WARNING - CL=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:06:25,645 - multi_data_fetcher - INFO - [HV] crude_oil 使用30天历史波动率: 29.24%
+2026-01-18 23:06:25,645 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 23:06:25,645 - multi_data_fetcher - INFO -   原油: 国内IV=23.92% 境外IV=29.24% 差值=+5.33%
+2026-01-18 23:06:25,834 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:06:25,834 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:06:25,968 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 23:06:25,968 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 23:06:25,968 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:06:25,969 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=26.54%
+2026-01-18 23:06:26,151 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:06:26,155 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:06:26,288 - option_contracts - WARNING - GC=F 无可用期权
+2026-01-18 23:06:26,290 - option_contracts - WARNING - GC=F 期权链为空
+2026-01-18 23:06:26,290 - multi_analyzer - WARNING - 黄金 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:06:26,290 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=12.78%
+2026-01-18 23:06:26,773 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:06:26,773 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:06:26,904 - option_contracts - WARNING - SI=F 无可用期权
+2026-01-18 23:06:26,905 - option_contracts - WARNING - SI=F 期权链为空
+2026-01-18 23:06:26,905 - multi_analyzer - WARNING - 白银 未找到境外ATM期权，无法提供真实合约
+2026-01-18 23:06:26,905 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=34.46%
+2026-01-18 23:06:26,905 - multi_analyzer - INFO - 原油: IV差 5.33% 未达开仓阈值 8.0%
+2026-01-18 23:06:26,905 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:06:28,030 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:06:28,031 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:06:28,031 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:06:29,209 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:06:29,209 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:06:29,210 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:06:30,507 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:06:30,507 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:12:59,816 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:13:00,191 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:13:00,269 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:13:00,269 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:13:00,269 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:13:00,269 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:13:00,269 - __main__ - INFO - ==================================================
+2026-01-18 23:13:00,269 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:13:00,269 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:13:01,490 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:13:02,868 - multi_data_fetcher - WARNING - copper 无可用期权到期日
+2026-01-18 23:13:02,868 - multi_data_fetcher - ERROR - [ERROR] 铜 境外期权IV无法获取真实数据
+2026-01-18 23:13:02,868 - multi_data_fetcher - WARNING - HG=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:13:03,050 - multi_data_fetcher - INFO - [HV] copper 使用30天历史波动率: 36.03%
+2026-01-18 23:13:03,050 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 23:13:03,050 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=36.03% 差值=+26.54%
+2026-01-18 23:13:03,050 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:13:03,856 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:13:04,349 - multi_data_fetcher - WARNING - gold 无可用期权到期日
+2026-01-18 23:13:04,349 - multi_data_fetcher - ERROR - [ERROR] 黄金 境外期权IV无法获取真实数据
+2026-01-18 23:13:04,349 - multi_data_fetcher - WARNING - GC=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:13:04,527 - multi_data_fetcher - INFO - [HV] gold 使用30天历史波动率: 20.80%
+2026-01-18 23:13:04,527 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 23:13:04,527 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=20.80% 差值=+12.78%
+2026-01-18 23:13:04,527 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:13:05,257 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:13:05,610 - multi_data_fetcher - WARNING - silver 无可用期权到期日
+2026-01-18 23:13:05,610 - multi_data_fetcher - ERROR - [ERROR] 白银 境外期权IV无法获取真实数据
+2026-01-18 23:13:05,610 - multi_data_fetcher - WARNING - SI=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:13:05,792 - multi_data_fetcher - INFO - [HV] silver 使用30天历史波动率: 76.84%
+2026-01-18 23:13:05,792 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 23:13:05,793 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=76.84% 差值=+34.46%
+2026-01-18 23:13:05,793 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:13:06,153 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 23:13:06,153 - multi_data_fetcher - WARNING - 原油 国内期权IV无法获取，尝试使用历史波动率
+2026-01-18 23:13:06,209 - multi_data_fetcher - INFO - [HV] 原油 使用30天国内历史波动率: 23.92%
+2026-01-18 23:13:06,564 - multi_data_fetcher - WARNING - crude_oil 无可用期权到期日
+2026-01-18 23:13:06,565 - multi_data_fetcher - ERROR - [ERROR] 原油 境外期权IV无法获取真实数据
+2026-01-18 23:13:06,565 - multi_data_fetcher - WARNING - CL=F 无法获取期权IV，尝试使用历史波动率
+2026-01-18 23:13:06,747 - multi_data_fetcher - INFO - [HV] crude_oil 使用30天历史波动率: 29.24%
+2026-01-18 23:13:06,747 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 23:13:06,747 - multi_data_fetcher - INFO -   原油: 国内IV=23.92% 境外IV=29.24% 差值=+5.33%
+2026-01-18 23:13:06,926 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:13:06,926 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:13:07,097 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 23:13:07,097 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 23:13:07,097 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，无真实合约数据
+2026-01-18 23:13:07,097 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=26.54%
+2026-01-18 23:13:07,253 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:13:07,253 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:13:07,426 - option_contracts - WARNING - GC=F 无可用期权
+2026-01-18 23:13:07,426 - option_contracts - WARNING - GC=F 期权链为空
+2026-01-18 23:13:07,427 - multi_analyzer - WARNING - 黄金 未找到境外ATM期权，无真实合约数据
+2026-01-18 23:13:07,427 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=12.78%
+2026-01-18 23:13:07,748 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:13:07,748 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:13:07,922 - option_contracts - WARNING - SI=F 无可用期权
+2026-01-18 23:13:07,922 - option_contracts - WARNING - SI=F 期权链为空
+2026-01-18 23:13:07,922 - multi_analyzer - WARNING - 白银 未找到境外ATM期权，无真实合约数据
+2026-01-18 23:13:07,923 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=34.46%
+2026-01-18 23:13:07,923 - multi_analyzer - INFO - 原油: IV差 5.33% 未达开仓阈值 8.0%
+2026-01-18 23:13:07,923 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:13:09,130 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:13:09,131 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:13:09,132 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:13:10,224 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:13:10,224 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:13:10,224 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:13:11,484 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:13:11,485 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:22:55,455 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:22:55,813 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:22:55,892 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:22:55,892 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-18 23:22:55,892 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:22:55,892 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:22:55,893 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:22:55,893 - __main__ - INFO - ==================================================
+2026-01-18 23:22:55,893 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:22:55,893 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:22:57,154 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:22:58,037 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:23:00,168 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:23:00,168 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-18 23:23:00,168 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 23:23:00,168 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=31.23% 差值=+21.74%
+2026-01-18 23:23:00,168 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:23:01,144 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:23:01,285 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:23:02,902 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:23:02,902 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-18 23:23:02,902 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 23:23:02,902 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=20.98% 差值=+12.97%
+2026-01-18 23:23:02,902 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:23:03,711 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:23:03,855 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:23:05,462 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:23:05,462 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-18 23:23:05,462 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 23:23:05,462 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=74.65% 差值=+32.26%
+2026-01-18 23:23:05,462 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:23:05,741 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 23:23:05,741 - multi_data_fetcher - WARNING - 原油 国内期权IV无法获取，尝试使用历史波动率
+2026-01-18 23:23:05,845 - multi_data_fetcher - INFO - [HV] 原油 使用30天国内历史波动率: 23.92%
+2026-01-18 23:23:05,987 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:23:07,509 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:23:07,509 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-18 23:23:07,509 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 23:23:07,510 - multi_data_fetcher - INFO -   原油: 国内IV=23.92% 境外IV=36.60% 差值=+12.68%
+2026-01-18 23:23:07,855 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:23:07,855 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:23:07,993 - option_contracts - WARNING - HG=F 无可用期权
+2026-01-18 23:23:07,994 - option_contracts - WARNING - HG=F 期权链为空
+2026-01-18 23:23:07,994 - multi_analyzer - WARNING - 铜 未找到境外ATM期权，无真实合约数据
+2026-01-18 23:23:07,994 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=21.74%
+2026-01-18 23:23:08,173 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:23:08,173 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:23:08,315 - option_contracts - WARNING - GC=F 无可用期权
+2026-01-18 23:23:08,315 - option_contracts - WARNING - GC=F 期权链为空
+2026-01-18 23:23:08,315 - multi_analyzer - WARNING - 黄金 未找到境外ATM期权，无真实合约数据
+2026-01-18 23:23:08,315 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=12.97%
+2026-01-18 23:23:08,752 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:23:08,752 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:23:08,890 - option_contracts - WARNING - SI=F 无可用期权
+2026-01-18 23:23:08,891 - option_contracts - WARNING - SI=F 期权链为空
+2026-01-18 23:23:08,891 - multi_analyzer - WARNING - 白银 未找到境外ATM期权，无真实合约数据
+2026-01-18 23:23:08,891 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=32.26%
+2026-01-18 23:23:09,022 - option_contracts - ERROR - 获取crude_oil 2603期权链失败: '原油期权'
+2026-01-18 23:23:09,022 - option_contracts - WARNING - crude_oil 2603 无可用期权合约
+2026-01-18 23:23:09,022 - multi_analyzer - WARNING - 原油 未找到国内ATM期权，无法提供真实合约
+2026-01-18 23:23:09,162 - option_contracts - WARNING - CL=F 无可用期权
+2026-01-18 23:23:09,162 - option_contracts - WARNING - CL=F 期权链为空
+2026-01-18 23:23:09,162 - multi_analyzer - WARNING - 原油 未找到境外ATM期权，无真实合约数据
+2026-01-18 23:23:09,162 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=12.68%
+2026-01-18 23:23:09,163 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:23:10,349 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:23:10,350 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:23:10,350 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:23:11,536 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:23:11,536 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:23:11,536 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:23:12,635 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:23:12,636 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:23:12,636 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 23:23:13,776 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:23:13,776 - __main__ - INFO - 原油 通知发送成功
+2026-01-18 23:29:35,108 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:29:35,474 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:29:35,537 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:29:35,538 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-18 23:29:35,538 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:29:35,538 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:29:35,538 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-18 23:29:35,538 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:29:35,538 - __main__ - INFO - ==================================================
+2026-01-18 23:29:35,538 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:29:35,538 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:29:37,549 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:29:38,499 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:29:40,906 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:29:40,907 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-18 23:29:40,907 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 23:29:40,907 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=31.23% 差值=+21.74%
+2026-01-18 23:29:40,907 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:29:41,907 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:29:42,045 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:29:44,118 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:29:44,118 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-18 23:29:44,118 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 23:29:44,118 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=20.98% 差值=+12.97%
+2026-01-18 23:29:44,118 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:29:45,010 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:29:45,149 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:29:47,228 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:29:47,229 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-18 23:29:47,229 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 23:29:47,229 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=74.65% 差值=+32.26%
+2026-01-18 23:29:47,229 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:29:47,633 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 23:29:47,633 - multi_data_fetcher - WARNING - 原油 国内期权IV无法获取，尝试使用历史波动率
+2026-01-18 23:29:47,693 - multi_data_fetcher - INFO - [HV] 原油 使用30天国内历史波动率: 23.92%
+2026-01-18 23:29:47,828 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:29:49,648 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:29:49,648 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-18 23:29:49,648 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 23:29:49,648 - multi_data_fetcher - INFO -   原油: 国内IV=23.92% 境外IV=36.60% 差值=+12.68%
+2026-01-18 23:29:49,848 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:29:49,848 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:29:49,848 - multi_analyzer - INFO - 铜 尝试从网页获取CME期权合约
+2026-01-18 23:29:49,848 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:29:51,892 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:29:51,892 - multi_analyzer - INFO - 铜 [Web] 成功获取境外期权合约: HGH26C6/HGH26P6
+2026-01-18 23:29:51,892 - multi_analyzer - INFO - 铜 境外期权: HGH26C6/HGH26P6 行权价 5.830999851226807
+2026-01-18 23:29:51,892 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=21.74%
+2026-01-18 23:29:52,064 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:29:52,064 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:29:52,064 - multi_analyzer - INFO - 黄金 尝试从网页获取CME期权合约
+2026-01-18 23:29:52,064 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:29:53,596 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:29:53,596 - multi_analyzer - INFO - 黄金 [Web] 成功获取境外期权合约: GCH26C4595/GCH26P4595
+2026-01-18 23:29:53,596 - multi_analyzer - INFO - 黄金 境外期权: GCH26C4595/GCH26P4595 行权价 4595.39990234375
+2026-01-18 23:29:53,596 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=12.97%
+2026-01-18 23:29:53,826 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:29:53,826 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:29:53,827 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-18 23:29:53,827 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:29:55,329 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:29:55,329 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-18 23:29:55,329 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-18 23:29:55,330 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=32.26%
+2026-01-18 23:29:55,568 - option_contracts - ERROR - 获取crude_oil 2603期权链失败: '原油期权'
+2026-01-18 23:29:55,569 - option_contracts - WARNING - crude_oil 2603 无可用期权合约
+2026-01-18 23:29:55,569 - multi_analyzer - WARNING - 原油 未找到国内ATM期权，无法提供真实合约
+2026-01-18 23:29:55,569 - multi_analyzer - INFO - 原油 尝试从网页获取CME期权合约
+2026-01-18 23:29:55,569 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:29:57,323 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:29:57,323 - multi_analyzer - INFO - 原油 [Web] 成功获取境外期权合约: CLH26C59/CLH26P59
+2026-01-18 23:29:57,324 - multi_analyzer - INFO - 原油 境外期权: CLH26C59/CLH26P59 行权价 59.34000015258789
+2026-01-18 23:29:57,324 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=12.68%
+2026-01-18 23:29:57,324 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:29:58,452 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:29:58,453 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:29:58,453 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:29:59,572 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:29:59,572 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:29:59,573 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:30:00,760 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:30:00,761 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:30:00,761 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 23:30:01,869 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:30:01,870 - __main__ - INFO - 原油 通知发送成功
+2026-01-18 23:39:46,228 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:39:46,576 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:39:46,637 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:39:46,638 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-18 23:39:46,638 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:39:46,638 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:39:46,638 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-18 23:39:46,638 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:39:46,638 - __main__ - INFO - ==================================================
+2026-01-18 23:39:46,638 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:39:46,639 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:39:47,508 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:39:50,722 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:39:52,932 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:39:52,932 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-18 23:39:52,932 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 23:39:52,933 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=31.23% 差值=+21.74%
+2026-01-18 23:39:52,933 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:39:53,755 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:39:53,894 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:39:55,826 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:39:55,826 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-18 23:39:55,827 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 23:39:55,827 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=20.98% 差值=+12.97%
+2026-01-18 23:39:55,827 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:39:56,812 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:39:56,953 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:39:59,003 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:39:59,003 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-18 23:39:59,003 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 23:39:59,004 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=74.65% 差值=+32.26%
+2026-01-18 23:39:59,004 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:39:59,229 - multi_data_fetcher - WARNING - 获取 crude_oil 国内期权链失败: '原油期权'
+2026-01-18 23:39:59,230 - multi_data_fetcher - WARNING - 原油 国内期权IV无法获取，尝试使用历史波动率
+2026-01-18 23:39:59,282 - multi_data_fetcher - INFO - [HV] 原油 使用30天国内历史波动率: 23.92%
+2026-01-18 23:39:59,425 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:40:00,974 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:40:00,974 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-18 23:40:00,975 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 23:40:00,975 - multi_data_fetcher - INFO -   原油: 国内IV=23.92% 境外IV=36.60% 差值=+12.68%
+2026-01-18 23:40:01,148 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:40:01,148 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:40:01,148 - multi_analyzer - INFO - 铜 尝试从网页获取CME期权合约
+2026-01-18 23:40:01,148 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:40:03,134 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:40:03,135 - multi_analyzer - INFO - 铜 [Web] 成功获取境外期权合约: HGH26C6/HGH26P6
+2026-01-18 23:40:03,135 - multi_analyzer - INFO - 铜 境外期权: HGH26C6/HGH26P6 行权价 5.830999851226807
+2026-01-18 23:40:03,135 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=21.74%
+2026-01-18 23:40:03,330 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:40:03,330 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:40:03,331 - multi_analyzer - INFO - 黄金 尝试从网页获取CME期权合约
+2026-01-18 23:40:03,331 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:40:04,939 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:40:04,940 - multi_analyzer - INFO - 黄金 [Web] 成功获取境外期权合约: GCH26C4595/GCH26P4595
+2026-01-18 23:40:04,940 - multi_analyzer - INFO - 黄金 境外期权: GCH26C4595/GCH26P4595 行权价 4595.39990234375
+2026-01-18 23:40:04,940 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=12.97%
+2026-01-18 23:40:05,116 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:40:05,116 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:40:05,116 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-18 23:40:05,116 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:40:06,641 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:40:06,641 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-18 23:40:06,641 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-18 23:40:06,641 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=32.26%
+2026-01-18 23:40:06,852 - option_contracts - INFO - 成功获取 29 个原油期权合约（sc2603月份）
+2026-01-18 23:40:06,852 - option_contracts - INFO - crude_oil 标的价格 438.8, 选择行权价 440.0, 差值 1.20
+2026-01-18 23:40:06,852 - multi_analyzer - INFO - 原油 国内期权: sc2603C440/sc2603P440 行权价 440.0
+2026-01-18 23:40:06,852 - multi_analyzer - INFO - 原油 尝试从网页获取CME期权合约
+2026-01-18 23:40:06,852 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:40:08,500 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:40:08,500 - multi_analyzer - INFO - 原油 [Web] 成功获取境外期权合约: CLH26C59/CLH26P59
+2026-01-18 23:40:08,500 - multi_analyzer - INFO - 原油 境外期权: CLH26C59/CLH26P59 行权价 59.34000015258789
+2026-01-18 23:40:08,500 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=12.68%
+2026-01-18 23:40:08,501 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:40:09,808 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:40:09,809 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:40:09,809 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:40:10,993 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:40:10,994 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:40:10,994 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:40:12,172 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:40:12,172 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:40:12,172 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 23:40:13,315 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:40:13,316 - __main__ - INFO - 原油 通知发送成功
+2026-01-18 23:43:22,216 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:43:22,597 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:43:22,659 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:43:22,660 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-18 23:43:22,660 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:43:22,660 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:43:22,660 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-18 23:43:22,660 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:43:22,660 - __main__ - INFO - ==================================================
+2026-01-18 23:43:22,660 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:43:22,660 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:43:23,443 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:43:24,084 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:43:25,950 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:43:25,951 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-18 23:43:25,951 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 23:43:25,951 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=31.23% 差值=+21.74%
+2026-01-18 23:43:25,952 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:43:26,472 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:43:26,614 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:43:28,118 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:43:28,119 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-18 23:43:28,119 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 23:43:28,119 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=20.98% 差值=+12.97%
+2026-01-18 23:43:28,119 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:43:28,813 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:43:28,960 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:43:30,432 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:43:30,433 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-18 23:43:30,433 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 23:43:30,433 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=74.65% 差值=+32.26%
+2026-01-18 23:43:30,433 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:43:30,748 - multi_data_fetcher - INFO - [OK] crude_oil 国内期权IV从真实数据获取: 14.16% (ATM行权价: 440)
+2026-01-18 23:43:30,893 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:43:32,583 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:43:32,584 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-18 23:43:32,584 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 23:43:32,584 - multi_data_fetcher - INFO -   原油: 国内IV=14.16% 境外IV=36.60% 差值=+22.44%
+2026-01-18 23:43:32,752 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:43:32,753 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:43:32,753 - multi_analyzer - INFO - 铜 尝试从网页获取CME期权合约
+2026-01-18 23:43:32,753 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:43:34,592 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:43:34,593 - multi_analyzer - INFO - 铜 [Web] 成功获取境外期权合约: HGH26C6/HGH26P6
+2026-01-18 23:43:34,593 - multi_analyzer - INFO - 铜 境外期权: HGH26C6/HGH26P6 行权价 5.830999851226807
+2026-01-18 23:43:34,593 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=21.74%
+2026-01-18 23:43:34,821 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:43:34,821 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:43:34,821 - multi_analyzer - INFO - 黄金 尝试从网页获取CME期权合约
+2026-01-18 23:43:34,822 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:43:36,361 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:43:36,362 - multi_analyzer - INFO - 黄金 [Web] 成功获取境外期权合约: GCH26C4595/GCH26P4595
+2026-01-18 23:43:36,362 - multi_analyzer - INFO - 黄金 境外期权: GCH26C4595/GCH26P4595 行权价 4595.39990234375
+2026-01-18 23:43:36,362 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=12.97%
+2026-01-18 23:43:36,590 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:43:36,590 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:43:36,590 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-18 23:43:36,591 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:43:38,369 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:43:38,370 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-18 23:43:38,370 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-18 23:43:38,370 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=32.26%
+2026-01-18 23:43:38,469 - option_contracts - INFO - 成功获取 29 个原油期权合约（sc2603月份）
+2026-01-18 23:43:38,470 - option_contracts - INFO - crude_oil 标的价格 438.8, 选择行权价 440.0, 差值 1.20
+2026-01-18 23:43:38,470 - multi_analyzer - INFO - 原油 国内期权: sc2603C440/sc2603P440 行权价 440.0
+2026-01-18 23:43:38,470 - multi_analyzer - INFO - 原油 尝试从网页获取CME期权合约
+2026-01-18 23:43:38,470 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:43:40,245 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:43:40,246 - multi_analyzer - INFO - 原油 [Web] 成功获取境外期权合约: CLH26C59/CLH26P59
+2026-01-18 23:43:40,246 - multi_analyzer - INFO - 原油 境外期权: CLH26C59/CLH26P59 行权价 59.34000015258789
+2026-01-18 23:43:40,246 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=22.44%
+2026-01-18 23:43:40,246 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:43:41,254 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:43:41,255 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:43:41,255 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:43:42,270 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:43:42,271 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:43:42,271 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:43:43,281 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:43:43,281 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:43:43,282 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 23:43:44,320 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:43:44,321 - __main__ - INFO - 原油 通知发送成功
+2026-01-18 23:51:27,674 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-18 23:51:28,021 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-18 23:51:28,079 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-18 23:51:28,081 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-18 23:51:28,081 - option_contracts - INFO - akshare 初始化成功
+2026-01-18 23:51:28,081 - option_contracts - INFO - yfinance 初始化成功
+2026-01-18 23:51:28,081 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-18 23:51:28,081 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-18 23:51:28,081 - __main__ - INFO - ==================================================
+2026-01-18 23:51:28,081 - __main__ - INFO - 执行多品种套利检查...
+2026-01-18 23:51:28,081 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-18 23:51:28,829 - multi_data_fetcher - WARNING - 【估算值警告】copper 使用简化公式估算IV，非精确隐含波动率
+2026-01-18 23:51:28,829 - multi_data_fetcher - INFO - [估算] copper 国内IV估算值: 9.49% (基于期权价格的粗略估算)
+2026-01-18 23:51:28,829 - multi_data_fetcher - INFO - [OK] copper 国内期权IV从真实数据获取: 9.49%
+2026-01-18 23:51:29,615 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:51:31,754 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:51:31,754 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-18 23:51:31,754 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-18 23:51:31,754 - multi_data_fetcher - INFO -   铜: 国内IV=9.49% 境外IV=31.23% 差值=+21.74%
+2026-01-18 23:51:31,754 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-18 23:51:32,693 - multi_data_fetcher - WARNING - 【估算值警告】gold 使用简化公式估算IV，非精确隐含波动率
+2026-01-18 23:51:32,693 - multi_data_fetcher - INFO - [估算] gold 国内IV估算值: 8.01% (基于期权价格的粗略估算)
+2026-01-18 23:51:32,693 - multi_data_fetcher - INFO - [OK] gold 国内期权IV从真实数据获取: 8.01%
+2026-01-18 23:51:32,853 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:51:34,831 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:51:34,831 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-18 23:51:34,831 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-18 23:51:34,831 - multi_data_fetcher - INFO -   黄金: 国内IV=8.01% 境外IV=20.98% 差值=+12.97%
+2026-01-18 23:51:34,831 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-18 23:51:35,567 - multi_data_fetcher - WARNING - 【估算值警告】silver 使用简化公式估算IV，非精确隐含波动率
+2026-01-18 23:51:35,567 - multi_data_fetcher - INFO - [估算] silver 国内IV估算值: 42.39% (基于期权价格的粗略估算)
+2026-01-18 23:51:35,567 - multi_data_fetcher - INFO - [OK] silver 国内期权IV从真实数据获取: 42.39%
+2026-01-18 23:51:35,725 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:51:37,727 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:51:37,727 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-18 23:51:37,727 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-18 23:51:37,727 - multi_data_fetcher - INFO -   白银: 国内IV=42.39% 境外IV=74.65% 差值=+32.26%
+2026-01-18 23:51:37,727 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-18 23:51:38,004 - multi_data_fetcher - WARNING - 【估算值警告】原油期权使用简化公式估算IV，非精确隐含波动率
+2026-01-18 23:51:38,004 - multi_data_fetcher - INFO - [估算] crude_oil 国内期权IV估算值: 14.16% (ATM行权价: 440) (基于期权价格的粗略估算)
+2026-01-18 23:51:38,164 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:51:39,781 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:51:39,782 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-18 23:51:39,782 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-18 23:51:39,782 - multi_data_fetcher - INFO -   原油: 国内IV=14.16% 境外IV=36.60% 差值=+22.44%
+2026-01-18 23:51:39,944 - option_contracts - INFO - copper 标的价格 100770.0, 选择行权价 100000.0, 差值 770.00
+2026-01-18 23:51:39,944 - multi_analyzer - INFO - 铜 国内期权: cu2603C100000/cu2603P100000 行权价 100000.0
+2026-01-18 23:51:39,944 - multi_analyzer - INFO - 铜 尝试从网页获取CME期权合约
+2026-01-18 23:51:39,944 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-18 23:51:41,805 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-18 23:51:41,805 - multi_analyzer - INFO - 铜 [Web] 成功获取境外期权合约: HGH26C6/HGH26P6
+2026-01-18 23:51:41,806 - multi_analyzer - INFO - 铜 境外期权: HGH26C6/HGH26P6 行权价 5.830999851226807
+2026-01-18 23:51:41,806 - multi_analyzer - INFO - 铜: 发现套利信号，IV差=21.74%
+2026-01-18 23:51:41,951 - option_contracts - INFO - gold 标的价格 1035.5, 选择行权价 1032.0, 差值 3.50
+2026-01-18 23:51:41,951 - multi_analyzer - INFO - 黄金 国内期权: au2603C1032/au2603P1032 行权价 1032.0
+2026-01-18 23:51:41,951 - multi_analyzer - INFO - 黄金 尝试从网页获取CME期权合约
+2026-01-18 23:51:41,951 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-18 23:51:43,734 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-18 23:51:43,734 - multi_analyzer - INFO - 黄金 [Web] 成功获取境外期权合约: GCH26C4595/GCH26P4595
+2026-01-18 23:51:43,734 - multi_analyzer - INFO - 黄金 境外期权: GCH26C4595/GCH26P4595 行权价 4595.39990234375
+2026-01-18 23:51:43,734 - multi_analyzer - INFO - 黄金: 发现套利信号，IV差=12.97%
+2026-01-18 23:51:44,017 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-18 23:51:44,017 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-18 23:51:44,017 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-18 23:51:44,017 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-18 23:51:45,562 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-18 23:51:45,562 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-18 23:51:45,562 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-18 23:51:45,563 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=32.26%
+2026-01-18 23:51:45,672 - option_contracts - INFO - 成功获取 29 个原油期权合约（sc2603月份）
+2026-01-18 23:51:45,672 - option_contracts - INFO - crude_oil 标的价格 438.8, 选择行权价 440.0, 差值 1.20
+2026-01-18 23:51:45,673 - multi_analyzer - INFO - 原油 国内期权: sc2603C440/sc2603P440 行权价 440.0
+2026-01-18 23:51:45,673 - multi_analyzer - INFO - 原油 尝试从网页获取CME期权合约
+2026-01-18 23:51:45,673 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-18 23:51:47,401 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-18 23:51:47,401 - multi_analyzer - INFO - 原油 [Web] 成功获取境外期权合约: CLH26C59/CLH26P59
+2026-01-18 23:51:47,401 - multi_analyzer - INFO - 原油 境外期权: CLH26C59/CLH26P59 行权价 59.34000015258789
+2026-01-18 23:51:47,401 - multi_analyzer - INFO - 原油: 发现套利信号，IV差=22.44%
+2026-01-18 23:51:47,401 - __main__ - INFO - 发送 铜 套利信号...
+2026-01-18 23:51:48,424 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:51:48,425 - __main__ - INFO - 铜 通知发送成功
+2026-01-18 23:51:48,425 - __main__ - INFO - 发送 黄金 套利信号...
+2026-01-18 23:51:49,440 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:51:49,441 - __main__ - INFO - 黄金 通知发送成功
+2026-01-18 23:51:49,441 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-18 23:51:50,592 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:51:50,593 - __main__ - INFO - 白银 通知发送成功
+2026-01-18 23:51:50,593 - __main__ - INFO - 发送 原油 套利信号...
+2026-01-18 23:51:51,638 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-18 23:51:51,639 - __main__ - INFO - 原油 通知发送成功
+2026-01-19 00:04:30,684 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-19 00:04:31,092 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-19 00:04:31,162 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-19 00:04:31,162 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-19 00:04:31,162 - option_contracts - INFO - akshare 初始化成功
+2026-01-19 00:04:31,162 - option_contracts - INFO - yfinance 初始化成功
+2026-01-19 00:04:31,163 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-19 00:04:31,163 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-19 00:04:31,163 - __main__ - INFO - ==================================================
+2026-01-19 00:04:31,163 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 00:04:31,163 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 00:04:35,186 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 00:04:35,187 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 00:04:36,472 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 00:04:38,741 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 00:04:38,741 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 00:04:38,741 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 00:04:38,741 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 00:04:38,741 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 00:04:42,815 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 00:04:42,816 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 00:04:43,108 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 00:04:45,375 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 00:04:45,375 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 00:04:45,376 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 00:04:45,376 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 00:04:45,376 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 00:04:48,893 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 00:04:48,894 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 00:04:49,368 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 00:04:51,153 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 00:04:51,154 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 00:04:51,154 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 00:04:51,154 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 00:04:51,154 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 00:04:55,397 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 00:04:55,398 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 00:04:55,581 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 00:04:57,191 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 00:04:57,191 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 00:04:57,191 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 00:04:57,191 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 00:04:57,191 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 00:04:57,192 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 00:04:57,401 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 00:04:57,401 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 00:04:57,402 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 00:04:57,402 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 00:04:59,290 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 00:04:59,290 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 00:04:59,290 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 00:04:59,291 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 00:04:59,291 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 00:04:59,291 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 00:05:00,284 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 00:05:00,285 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 00:07:08,820 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-19 00:07:09,160 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-19 00:07:09,230 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-19 00:07:09,230 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-19 00:07:09,231 - option_contracts - INFO - akshare 初始化成功
+2026-01-19 00:07:09,231 - option_contracts - INFO - yfinance 初始化成功
+2026-01-19 00:07:09,232 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-19 00:07:09,232 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-19 00:07:09,232 - __main__ - INFO - ==================================================
+2026-01-19 00:07:09,232 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 00:07:09,232 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 00:07:14,669 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 00:07:14,671 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 00:07:15,892 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 00:07:17,986 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 00:07:17,986 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 00:07:17,986 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 00:07:17,986 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 00:07:17,986 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 00:07:21,110 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 00:07:21,111 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 00:07:21,286 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 00:07:23,467 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 00:07:23,467 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 00:07:23,467 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 00:07:23,467 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 00:07:23,468 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 00:07:29,460 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 00:07:29,462 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 00:07:29,643 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 00:07:31,830 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 00:07:31,830 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 00:07:31,830 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 00:07:31,831 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 00:07:31,831 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 00:07:35,413 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 00:07:35,415 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 00:07:35,597 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 00:07:37,696 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 00:07:37,696 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 00:07:37,696 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 00:07:37,697 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 00:07:37,697 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 00:07:37,697 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 00:07:37,986 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 00:07:37,986 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 00:07:37,987 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 00:07:37,987 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 00:07:39,927 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 00:07:39,927 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 00:07:39,927 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 00:07:39,927 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 00:07:39,928 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 00:07:39,928 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 00:07:40,987 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 00:07:40,987 - __main__ - INFO - 白银 通知发送成功

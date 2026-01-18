@@ -96,6 +96,20 @@ class MultiArbitrageAnalyzer:
         # 初始化期权合约获取器
         self.domestic_fetcher = DomesticOptionContractFetcher()
         self.foreign_fetcher = ForeignOptionContractFetcher()
+        
+        # 初始化网页爬虫（用于获取CME真实期权合约）
+        self.web_scraper = None
+        self._init_web_scraper()
+    
+    def _init_web_scraper(self):
+        """初始化CME网页爬虫"""
+        try:
+            from cme_web_scraper import CMEWebScraper
+            self.web_scraper = CMEWebScraper()
+            logger.info("CME网页爬虫初始化成功")
+        except Exception as e:
+            logger.warning(f"CME网页爬虫初始化失败: {e}")
+            self.web_scraper = None
 
     def analyze(self, inst_data: InstrumentData) -> Optional[MultiArbitrageSignal]:
         """
@@ -108,6 +122,17 @@ class MultiArbitrageAnalyzer:
             MultiArbitrageSignal 或 None
         """
         if not inst_data.domestic or not inst_data.foreign:
+            logger.warning(f"{inst_data.config.name} 数据不完整，跳过分析")
+            return None
+        
+        # 验证IV数据有效性（必须为真实数据，不能为None）
+        if inst_data.domestic.atm_iv is None or inst_data.foreign.atm_iv is None:
+            logger.warning(
+                f"{inst_data.config.name} IV数据不完整 "
+                f"(国内: {inst_data.domestic.atm_iv}, "
+                f"境外: {inst_data.foreign.atm_iv})，"
+                f"无法进行套利分析"
+            )
             return None
 
         config = inst_data.config
@@ -212,7 +237,9 @@ class MultiArbitrageAnalyzer:
             "foreign_call": "",
             "foreign_put": "",
             "domestic_strike": 0,
-            "foreign_strike": 0
+            "foreign_strike": 0,
+            "domestic_is_placeholder": False,  # 标记国内合约是否为占位符
+            "foreign_is_placeholder": False    # 标记境外合约是否为占位符
         }
 
         # 获取国内期权合约
@@ -228,29 +255,54 @@ class MultiArbitrageAnalyzer:
                     contracts["domestic_call"] = atm_contract.call_symbol
                     contracts["domestic_put"] = atm_contract.put_symbol
                     contracts["domestic_strike"] = atm_contract.strike_price
+                    
                     logger.info(
                         f"{config.name} 国内期权: "
                         f"{atm_contract.call_symbol}/{atm_contract.put_symbol} "
                         f"行权价 {atm_contract.strike_price}"
                     )
                 else:
-                    logger.warning(f"{config.name} 未找到国内ATM期权，使用估算")
-                    # 回退到估算
-                    contracts.update(self._get_domestic_fallback(inst_data, month_str))
+                    logger.warning(f"{config.name} 未找到国内ATM期权，无法提供真实合约")
 
             except Exception as e:
                 logger.error(f"获取{config.name}国内期权失败: {e}")
-                contracts.update(self._get_domestic_fallback(inst_data, month_str))
+                logger.warning(f"{config.name} 无法提供真实国内期权合约")
 
         # 获取境外期权合约
         if inst_data.foreign:
             try:
-                # CME期权使用yfinance
-                foreign_contract = self.foreign_fetcher.get_atm_contract(
-                    config.foreign_yf_symbol,
-                    inst_data.foreign.price
-                )
-
+                # 优先使用网页爬虫获取真实CME期权数据
+                foreign_contract = None
+                
+                if self.web_scraper:
+                    try:
+                        logger.info(f"{config.name} 尝试从网页获取CME期权合约")
+                        option_data = self.web_scraper.get_barchart_options(
+                            inst_data.instrument,
+                            inst_data.foreign.price
+                        )
+                        
+                        if option_data:
+                            foreign_contract = {
+                                'call_symbol': option_data['call_symbol'],
+                                'put_symbol': option_data['put_symbol'],
+                                'strike': option_data['strike']
+                            }
+                            logger.info(
+                                f"{config.name} [Web] 成功获取境外期权合约: "
+                                f"{option_data['call_symbol']}/{option_data['put_symbol']}"
+                            )
+                    except Exception as e:
+                        logger.debug(f"{config.name} 网页获取期权合约失败: {e}")
+                
+                # 如果网页获取失败，尝试yfinance
+                if not foreign_contract:
+                    logger.info(f"{config.name} 尝试从yfinance获取期权合约")
+                    foreign_contract = self.foreign_fetcher.get_atm_contract(
+                        config.foreign_yf_symbol,
+                        inst_data.foreign.price
+                    )
+                
                 if foreign_contract:
                     contracts["foreign_call"] = foreign_contract['call_symbol']
                     contracts["foreign_put"] = foreign_contract['put_symbol']
@@ -261,67 +313,21 @@ class MultiArbitrageAnalyzer:
                         f"行权价 {foreign_contract['strike']}"
                     )
                 else:
-                    logger.warning(f"{config.name} 未找到境外ATM期权，使用估算")
-                    contracts.update(self._get_foreign_fallback(inst_data, month, year_short))
+                    logger.warning(f"{config.name} 未找到境外ATM期权，无真实合约数据")
+                    # 标记为无真实数据
+                    contracts["foreign_call"] = "无真实期权数据"
+                    contracts["foreign_put"] = "使用历史波动率估算IV"
+                    contracts["foreign_strike"] = inst_data.foreign.price if inst_data.foreign else 0
 
             except Exception as e:
                 logger.error(f"获取{config.name}境外期权失败: {e}")
-                contracts.update(self._get_foreign_fallback(inst_data, month, year_short))
+                logger.warning(f"{config.name} 无真实境外期权数据")
+                # 标记为无真实数据
+                contracts["foreign_call"] = "无真实期权数据"
+                contracts["foreign_put"] = "使用历史波动率估算IV"
+                contracts["foreign_strike"] = inst_data.foreign.price if inst_data.foreign else 0
 
         return contracts
-
-    def _get_domestic_fallback(self, inst_data: InstrumentData, month_str: str) -> dict:
-        """国内期权回退估算"""
-        config = inst_data.config
-        price = inst_data.domestic.price if inst_data.domestic else 0
-
-        # 根据品种估算行权价
-        if config.domestic_symbol == "CU":
-            strike = round(price / 2000) * 2000
-        elif config.domestic_symbol == "AU":
-            strike = round(price / 2) * 2
-        elif config.domestic_symbol == "AG":
-            strike = round(price / 200) * 200
-        elif config.domestic_symbol == "SC":
-            strike = round(price / 5) * 5
-        else:
-            strike = round(price)
-
-        domestic_base = f"{config.domestic_symbol}{month_str}"
-        return {
-            "domestic_call": f"{domestic_base}C{int(strike)}",
-            "domestic_put": f"{domestic_base}P{int(strike)}",
-            "domestic_strike": strike
-        }
-
-    def _get_foreign_fallback(self, inst_data: InstrumentData, month: int, year_short: int) -> dict:
-        """境外期权回退估算"""
-        config = inst_data.config
-        cme_month_code = CME_MONTH_CODES.get(month, 'F')
-        foreign_base = f"{config.foreign_symbol}{cme_month_code}{year_short:02d}"
-
-        if inst_data.foreign:
-            foreign_price = inst_data.foreign.price
-            if config.foreign_symbol == "HG":
-                foreign_strike = round(foreign_price * 100)
-            elif config.foreign_symbol == "GC":
-                foreign_strike = round(foreign_price / 10) * 10
-            elif config.foreign_symbol == "SI":
-                foreign_strike = round(foreign_price * 2) / 2
-                foreign_strike = int(foreign_strike * 100)
-            elif config.foreign_symbol == "CL":
-                foreign_strike = round(foreign_price)
-            else:
-                foreign_strike = round(foreign_price)
-        else:
-            foreign_strike = 0
-
-        return {
-            "foreign_call": f"{foreign_base}C{foreign_strike}",
-            "foreign_put": f"{foreign_base}P{foreign_strike}",
-            "foreign_strike": foreign_strike
-        }
-
     def _generate_recommendation(
         self,
         direction: SignalDirection,
@@ -330,16 +336,20 @@ class MultiArbitrageAnalyzer:
     ) -> str:
         """生成操作建议"""
         config = inst_data.config
+        
+        # 准备数据来源说明（预留，目前不使用）
+        domestic_note = ""
+        foreign_note = ""
 
         if direction == SignalDirection.BUY_DOMESTIC_SELL_FOREIGN:
             return f"""
 <b>【买入】{config.domestic_exchange}</b>
 • <code>{contracts['domestic_call']}</code> 看涨
-• <code>{contracts['domestic_put']}</code> 看跌
+• <code>{contracts['domestic_put']}</code> 看跌{domestic_note}
 
 <b>【卖出】{config.foreign_exchange}</b>
 • <code>{contracts['foreign_call']}</code> 看涨
-• <code>{contracts['foreign_put']}</code> 看跌
+• <code>{contracts['foreign_put']}</code> 看跌{foreign_note}
 
 行权价: 国内 {contracts['domestic_strike']:,} / 境外 {contracts['foreign_strike']}
 汇率对冲: 买入CNH期货
@@ -348,11 +358,11 @@ class MultiArbitrageAnalyzer:
             return f"""
 <b>【卖出】{config.domestic_exchange}</b>
 • <code>{contracts['domestic_call']}</code> 看涨
-• <code>{contracts['domestic_put']}</code> 看跌
+• <code>{contracts['domestic_put']}</code> 看跌{domestic_note}
 
 <b>【买入】{config.foreign_exchange}</b>
 • <code>{contracts['foreign_call']}</code> 看涨
-• <code>{contracts['foreign_put']}</code> 看跌
+• <code>{contracts['foreign_put']}</code> 看跌{foreign_note}
 
 行权价: 国内 {contracts['domestic_strike']:,} / 境外 {contracts['foreign_strike']}
 汇率对冲: 卖出CNH期货
@@ -371,11 +381,14 @@ class MultiArbitrageAnalyzer:
 • 到期: 确保两边到期日接近"""
 
     def _estimate_profit(self, iv_diff: float, inst_data: InstrumentData) -> float:
-        """估算收益"""
-        # 简化估算
+        """
+        估算收益（粗略估算，仅供参考）
+        
+        警告：使用固定系数的简化估算，不能作为实际交易依据
+        """
         config = inst_data.config
 
-        # 基于品种的Vega估算
+        # 简化Vega估算（固定系数，非精确值）
         vega_factors = {
             "copper": 800,
             "gold": 500,
@@ -385,7 +398,15 @@ class MultiArbitrageAnalyzer:
 
         vega = vega_factors.get(inst_data.instrument, 500)
         gross_profit = iv_diff * vega
-        return gross_profit * 0.8  # 扣除成本
+        net_profit = gross_profit * 0.8  # 扣除成本
+        
+        logger.debug(
+            f"[收益估算] {config.name} 使用固定系数: "
+            f"IV差={iv_diff:.2f}%, 估算净收益={net_profit:.0f}元 "
+            "(粗略估算，仅供参考)"
+        )
+        
+        return net_profit
 
 
 if __name__ == "__main__":

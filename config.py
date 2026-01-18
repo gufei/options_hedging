@@ -4,11 +4,22 @@
 所有可调整的参数都在这里配置
 """
 
+import os
+
+# 尝试从 .env 文件加载环境变量
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    # 如果没有安装 python-dotenv，跳过
+    pass
+
 # ============================================================
 #                    Telegram 配置
 # ============================================================
-TELEGRAM_BOT_TOKEN = "8029479427:AAEOJqdxUeQu8mIbIyKEsOGDWsH0v4DXcZU"
-TELEGRAM_CHAT_ID = "-5154029819"
+# 从环境变量读取敏感信息，如果环境变量不存在则使用默认值（用于测试）
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "YOUR_CHAT_ID_HERE")
 
 
 # ============================================================
@@ -147,6 +158,13 @@ SHFE_TRADING_HOURS = TRADING_HOURS
 # 汇率（用于收益计算）
 USD_CNY_RATE = 7.20
 
+# Vega 计算参数（用于盈亏估算）
+VEGA_PARAMS = {
+    "shfe_multiplier": 5,      # 沪铜期权合约乘数（吨）
+    "cme_multiplier": 25000,   # CME铜期权合约乘数（磅）
+    "iv_to_price": 0.001       # IV到价格的转换系数
+}
+
 
 # ============================================================
 #                    日志配置
@@ -158,8 +176,9 @@ LOG_FILE = "options_hedging.log"
 # ============================================================
 #                    兼容旧版本的配置
 # ============================================================
-# 以下参数保留用于兼容单品种监控程序
-IV_DIFF_THRESHOLD = 5.0
-MIN_IV_DIFF = 3.0
-CLOSE_IV_THRESHOLD = 5.0
-STOP_LOSS_IV_THRESHOLD = 18.0
+# 以下参数保留用于兼容单品种监控程序（monitor.py）
+# 多品种监控程序（multi_monitor.py）使用 INSTRUMENTS_CONFIG 中的配置
+IV_DIFF_THRESHOLD = 5.0        # 默认IV差阈值
+MIN_IV_DIFF = 3.0              # 默认最小IV差
+CLOSE_IV_THRESHOLD = 5.0       # 默认平仓阈值
+STOP_LOSS_IV_THRESHOLD = 18.0  # 默认止损阈值

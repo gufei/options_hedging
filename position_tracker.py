@@ -5,9 +5,12 @@
 import json
 import logging
 from datetime import datetime, timedelta
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, TYPE_CHECKING
 from dataclasses import dataclass, asdict, field
 from pathlib import Path
+
+if TYPE_CHECKING:
+    from arbitrage_analyzer import ArbitrageSignal
 
 logger = logging.getLogger(__name__)
 
@@ -157,6 +160,9 @@ class PositionTracker:
     def _save_positions(self):
         """保存持仓到文件"""
         try:
+            # 确保父目录存在
+            POSITIONS_FILE.parent.mkdir(parents=True, exist_ok=True)
+
             with open(POSITIONS_FILE, 'w', encoding='utf-8') as f:
                 data = [asdict(p) for p in self.positions]
                 json.dump(data, f, ensure_ascii=False, indent=2)
@@ -164,7 +170,7 @@ class PositionTracker:
         except Exception as e:
             logger.error(f"保存持仓失败: {e}")
 
-    def add_position(self, signal) -> Position:
+    def add_position(self, signal: "ArbitrageSignal") -> Position:
         """
         添加新持仓
 
@@ -174,6 +180,7 @@ class PositionTracker:
         Returns:
             新建的 Position
         """
+        # 延迟导入避免循环依赖
         from arbitrage_analyzer import ArbitrageAnalyzer
 
         # 生成持仓ID
@@ -258,24 +265,31 @@ class PositionTracker:
             try:
                 expiry = datetime.strptime(position.expiry_date, '%Y-%m-%d')
                 days_to_expiry = (expiry - now).days
-            except:
+            except ValueError as e:
+                logger.warning(f"持仓 {position.id} 到期日解析失败: {e}，使用默认值")
                 days_to_expiry = 30  # 默认值
 
             # 计算持仓天数
             try:
                 open_time = datetime.strptime(position.open_time, '%Y-%m-%d %H:%M:%S')
                 holding_days = (now - open_time).days
-            except:
+            except ValueError as e:
+                logger.warning(f"持仓 {position.id} 开仓时间解析失败: {e}")
                 holding_days = 0
 
-            # 预估盈亏（简化计算）
-            # 基于IV差变化和Vega估算
+            # 预估盈亏（简化计算，仅供参考）
+            # 警告：使用固定系数的粗略估算
             if position.direction == 'buy_shfe_sell_cme':
                 # 买沪铜卖CME: 希望IV差缩小（current_iv_diff < open_iv_diff）
-                estimated_pnl = -iv_diff_change * 800  # 简化：每1%IV差约800元
+                estimated_pnl = -iv_diff_change * 800  # 简化估算：每1%IV差约800元
             else:
                 # 卖沪铜买CME: 希望IV差扩大
                 estimated_pnl = iv_diff_change * 800
+            
+            logger.debug(
+                f"[盈亏估算] 持仓{position.id}: IV差变化={iv_diff_change:.2f}%, "
+                f"估算盈亏={estimated_pnl:.0f}元 (粗略估算)"
+            )
 
             # 检查平仓条件
 

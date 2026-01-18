@@ -9,6 +9,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 
 from data_fetcher import MarketSnapshot
+from config import VEGA_PARAMS
 
 logger = logging.getLogger(__name__)
 
@@ -296,27 +297,30 @@ class ArbitrageAnalyzer:
         cme_data: MarketSnapshot
     ) -> float:
         """
-        估算预期收益
+        估算预期收益（粗略估算，仅供参考）
 
-        基于波动率差异和Vega估算
+        警告：这是基于简化Vega模型的粗略估算，不能作为实际交易依据
         """
-        # 简化估算：假设 Vega ≈ 0.1 * 标的价格 * sqrt(T)
-        # 每1%的IV变化带来的收益
+        # 从配置读取参数
+        shfe_multiplier = VEGA_PARAMS["shfe_multiplier"]
+        cme_multiplier = VEGA_PARAMS["cme_multiplier"]
+        iv_to_price = VEGA_PARAMS["iv_to_price"]
 
-        # 沪铜一手 = 5吨
-        shfe_vega_per_hand = shfe_data.underlying_price * 5 * 0.001  # 约 500元/%/手
-
-        # CME一手 = 25000磅 ≈ 11.34吨
-        # 转换为人民币
-        cme_vega_per_hand = cme_data.underlying_price * 25000 * 0.001 * self.usd_cny_rate
+        # 简化Vega估算（实际Vega需要使用Black-Scholes模型计算）
+        shfe_vega_per_hand = shfe_data.underlying_price * shfe_multiplier * iv_to_price
+        cme_vega_per_hand = cme_data.underlying_price * cme_multiplier * iv_to_price * self.usd_cny_rate
 
         # 组合配比：CME 1手 ≈ 沪铜 2手
-        # 套利收益 ≈ IV差 * 平均Vega
         avg_vega = (shfe_vega_per_hand * 2 + cme_vega_per_hand) / 2
         gross_profit = iv_diff * avg_vega
 
-        # 扣除成本（约20%）
+        # 扣除成本（约20%，包括手续费、滑点等）
         net_profit = gross_profit * 0.8
+
+        logger.debug(
+            f"[收益估算] 使用简化公式: IV差={iv_diff:.2f}%, "
+            f"估算净收益={net_profit:.0f}元 (粗略估算，仅供参考)"
+        )
 
         return net_profit
 
