@@ -91,7 +91,8 @@ class MultiInstrumentMonitor:
 
     def _signal_handler(self, signum, frame):
         logger.info(f"收到信号 {signum}，准备停止...")
-        self.stop()
+        self.running = False  # 立即设置标志位
+        # 不在信号处理器中调用 stop()，让主循环的 finally 来处理
 
     def is_trading_hours(self) -> bool:
         """检查是否在交易时段"""
@@ -250,8 +251,12 @@ class MultiInstrumentMonitor:
                 else:
                     logger.debug("当前非交易时段")
 
+                # 使用可中断的睡眠（分段睡眠，每秒检查一次）
                 logger.info(f"等待 {MONITOR_INTERVAL} 秒...")
-                time.sleep(MONITOR_INTERVAL)
+                for _ in range(MONITOR_INTERVAL):
+                    if not self.running:
+                        break
+                    time.sleep(1)
 
         except KeyboardInterrupt:
             logger.info("收到中断信号")
@@ -285,14 +290,25 @@ class MultiInstrumentMonitor:
         logger.info("停止监控...")
         self.running = False
 
-        msg = f"""⏹ <b>多品种套利监控系统已停止</b>
+        try:
+            msg = f"""⏹ <b>多品种套利监控系统已停止</b>
 
 ⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
 📊 <b>本次运行统计</b>
 • 检查次数: {self.stats['total_checks']}
 """
-        self.notifier.send_message(msg, parse_mode="HTML")
+            # 使用较短的超时时间，避免退出时阻塞
+            try:
+                # 尝试使用 timeout 参数（TelegramNotifierSimple 支持）
+                self.notifier.send_message(msg, parse_mode="HTML", timeout=3)
+            except TypeError:
+                # 如果不支持 timeout 参数，则使用默认方式
+                self.notifier.send_message(msg, parse_mode="HTML")
+        except Exception as e:
+            logger.warning(f"发送停止通知失败: {e}")
+        
+        logger.info("程序已停止")
 
 
 def main():

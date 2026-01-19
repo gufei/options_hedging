@@ -186,7 +186,7 @@ class TelegramNotifierSimple:
         self.chat_id = chat_id
         self.api_url = f"https://api.telegram.org/bot{bot_token}"
 
-    def send_message(self, message: str, parse_mode: str = "Markdown") -> bool:
+    def send_message(self, message: str, parse_mode: str = "Markdown", timeout: int = 10) -> bool:
         """使用 requests 发送消息"""
         try:
             import requests
@@ -198,7 +198,7 @@ class TelegramNotifierSimple:
                 "parse_mode": parse_mode
             }
 
-            response = requests.post(url, data=data, timeout=10)
+            response = requests.post(url, data=data, timeout=timeout)
             result = response.json()
 
             if result.get("ok"):
@@ -209,7 +209,7 @@ class TelegramNotifierSimple:
                 # 尝试不使用格式化
                 data["text"] = message.replace("**", "").replace("*", "").replace("`", "")
                 del data["parse_mode"]
-                response = requests.post(url, data=data, timeout=10)
+                response = requests.post(url, data=data, timeout=timeout)
                 return response.json().get("ok", False)
 
         except Exception as e:
