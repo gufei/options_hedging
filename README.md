@@ -4,6 +4,13 @@
 
 ## 🎉 v2.1 最新更新 (2026-01-18)
 
+### 🆕 **自动手数计算功能（2026-01-19 新增）**
+- ✅ **智能计算** - 根据国内购买手数自动计算对应境外手数
+- ✅ **单位转换** - 自动处理不同计量单位（吨↔磅、克↔盎司等）
+- ✅ **最优对冲** - 计算接近1:1对冲比例的最佳手数组合
+- ✅ **合约规格** - 精确匹配各品种的真实合约规格
+- 📖 详见：[手数计算功能说明](docs/lot_calculator_guide.md)
+
 ### 🆕 **网页爬取功能集成（方案2）**
 - ✅ **真实IV数据** - 从Barchart网页爬取CME期权真实隐含波动率
 - ✅ **多层降级** - 网页爬取 → yfinance → 历史波动率
@@ -24,6 +31,7 @@
 - ⚠️ **降级策略** - 使用历史波动率代替IV时会明确标记警告
 
 ### 📖 详细文档
+- [手数计算功能说明.md](docs/lot_calculator_guide.md) - **手数计算使用指南**
 - [方案2实施总结.md](docs/方案2实施总结.md) - **必读！实施结果和效果**
 - [网页爬取集成说明.md](docs/网页爬取集成说明.md) - 使用和维护指南
 - [数据准确性检查与修复报告.md](docs/数据准确性检查与修复报告.md) - **数据质量保证**
@@ -34,6 +42,10 @@
 
 ### 🧪 测试脚本
 ```bash
+# 测试手数计算
+python lot_calculator.py
+python test\test_lot_calculator.py
+
 # 测试网页爬虫
 python test_web_scraper.py
 
@@ -51,12 +63,12 @@ python multi_monitor.py --check-once
 
 **支持品种**：
 
-| 品种 | 境内交易所 | 境内代码 | 境外交易所 | 境外代码 |
-|------|-----------|---------|-----------|---------|
-| 铜 | 上期所(SHFE) | CU | CME | HG |
-| 黄金 | 上期所(SHFE) | AU | CME | GC |
-| 白银 | 上期所(SHFE) | AG | CME | SI |
-| 原油 | 上期能源(INE) | SC | CME | CL |
+| 品种 | 境内交易所 | 境内代码 | 境内每手 | 境外交易所 | 境外代码 | 境外每手 |
+|------|-----------|---------|---------|-----------|---------|---------|
+| 铜 | 上期所(SHFE) | CU | 5吨 | CME | HG | 25,000磅 |
+| 黄金 | 上期所(SHFE) | AU | 1,000克 | CME | GC | 100盎司 |
+| 白银 | 上期所(SHFE) | AG | 15千克 | CME | SI | 5,000盎司 |
+| 原油 | 上期能源(INE) | SC | 1,000桶 | CME | CL | 1,000桶 |
 
 ## 快速开始
 
@@ -163,17 +175,26 @@ python position_tracker.py
 options_hedging/
 ├── config.py              # 配置文件（所有参数）
 ├── instruments.py         # 品种定义（从config加载）
+├── lot_calculator.py      # 手数计算模块（新）
 ├── multi_data_fetcher.py  # 多品种数据获取
 ├── multi_analyzer.py      # 多品种套利分析
 ├── multi_monitor.py       # 多品种监控主程序
 ├── position_tracker.py    # 持仓跟踪器
 ├── telegram_notifier.py   # Telegram 通知模块
+├── cme_web_scraper.py     # CME网页爬虫
+├── option_contracts.py    # 期权合约获取
 ├── data_fetcher.py        # 单品种数据获取（旧版）
 ├── arbitrage_analyzer.py  # 单品种套利分析（旧版）
 ├── monitor.py             # 单品种监控（旧版）
 ├── requirements.txt       # Python 依赖
 ├── positions.json         # 持仓记录（运行时生成）
 ├── options_hedging.log    # 日志文件（运行时生成）
+├── docs/                  # 文档目录
+│   ├── lot_calculator_guide.md  # 手数计算说明
+│   └── ...                      # 其他文档
+├── test/                  # 测试脚本
+│   ├── test_lot_calculator.py
+│   └── ...
 └── README.md              # 说明文档
 ```
 
@@ -203,12 +224,16 @@ INSTRUMENTS_CONFIG = {
         "domestic_exchange": "SHFE",  # 交易所
         "domestic_symbol": "CU",      # 合约代码
         "domestic_unit": "元/吨",     # 单位
+        "domestic_lot_size": 5,       # 每手5吨
+        "domestic_base_unit": "吨",   # 基础单位
 
         # 境外市场
         "foreign_exchange": "CME",
         "foreign_symbol": "HG",
         "foreign_yf_symbol": "HG=F",  # yfinance代码
         "foreign_unit": "美元/磅",
+        "foreign_lot_size": 25000,    # 每手25,000磅
+        "foreign_base_unit": "磅",    # 基础单位
 
         # 套利参数
         "iv_open_threshold": 8.0,     # 开仓IV差阈值
@@ -279,6 +304,10 @@ TRADING_HOURS = {
 • 方向: 📈 买铜 + 卖境外
 • 强度: 🔴强
 • 预期收益: 7,700 元/套
+
+📦 建议购买数量 (最优对冲比例 113.4%)
+• 国内: 16 手 (80 吨)
+• 境外: 8 手 (200,000 磅)
 
 📋 操作指令
 【买入】SHFE

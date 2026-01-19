@@ -44,12 +44,16 @@ INSTRUMENTS_CONFIG = {
         "domestic_exchange": "SHFE",    # 交易所
         "domestic_symbol": "CU",        # 合约代码
         "domestic_unit": "元/吨",       # 单位
+        "domestic_lot_size": 5,         # 每手5吨
+        "domestic_base_unit": "吨",     # 基础单位
 
         # 境外市场
         "foreign_exchange": "CME",
         "foreign_symbol": "HG",
         "foreign_yf_symbol": "HG=F",    # yfinance代码
         "foreign_unit": "美元/磅",
+        "foreign_lot_size": 25000,      # 每手25,000磅
+        "foreign_base_unit": "磅",      # 基础单位
 
         # 套利参数
         "iv_open_threshold": 8.0,       # 开仓阈值
@@ -67,11 +71,15 @@ INSTRUMENTS_CONFIG = {
         "domestic_exchange": "SHFE",
         "domestic_symbol": "AU",
         "domestic_unit": "元/克",
+        "domestic_lot_size": 1000,      # 每手1,000克
+        "domestic_base_unit": "克",     # 基础单位
 
         "foreign_exchange": "CME",
         "foreign_symbol": "GC",
         "foreign_yf_symbol": "GC=F",
         "foreign_unit": "美元/盎司",
+        "foreign_lot_size": 100,        # 每手100盎司
+        "foreign_base_unit": "盎司",    # 基础单位
 
         "iv_open_threshold": 6.0,
         "iv_close_threshold": 4.0,
@@ -88,16 +96,20 @@ INSTRUMENTS_CONFIG = {
         "domestic_exchange": "SHFE",
         "domestic_symbol": "AG",
         "domestic_unit": "元/千克",
+        "domestic_lot_size": 15,        # 每手15千克
+        "domestic_base_unit": "千克",   # 基础单位
 
         "foreign_exchange": "CME",
         "foreign_symbol": "SI",
         "foreign_yf_symbol": "SI=F",
         "foreign_unit": "美元/盎司",
+        "foreign_lot_size": 5000,       # 每手5,000盎司
+        "foreign_base_unit": "盎司",    # 基础单位
 
-        "iv_open_threshold": 8.0,
-        "iv_close_threshold": 5.0,
-        "iv_stop_loss": 18.0,
-        "min_iv_diff": 3.0,
+        "iv_open_threshold": 18.0,      # 白银波动大，提高阈值（原8.0）
+        "iv_close_threshold": 12.0,     # 相应提高平仓阈值（原5.0）
+        "iv_stop_loss": 32.0,           # 提高止损阈值（原18.0）
+        "min_iv_diff": 10.0,            # 提高最小差值过滤（原3.0）
     },
 
     # ========== 原油 ==========
@@ -109,16 +121,20 @@ INSTRUMENTS_CONFIG = {
         "domestic_exchange": "INE",
         "domestic_symbol": "SC",
         "domestic_unit": "元/桶",
+        "domestic_lot_size": 1000,      # 每手1,000桶
+        "domestic_base_unit": "桶",     # 基础单位
 
         "foreign_exchange": "CME",
         "foreign_symbol": "CL",
         "foreign_yf_symbol": "CL=F",
         "foreign_unit": "美元/桶",
+        "foreign_lot_size": 1000,       # 每手1,000桶
+        "foreign_base_unit": "桶",      # 基础单位
 
-        "iv_open_threshold": 8.0,
-        "iv_close_threshold": 5.0,
-        "iv_stop_loss": 18.0,
-        "min_iv_diff": 3.0,
+        "iv_open_threshold": 11.0,      # 原油IV偏高，适度提高阈值（原8.0）
+        "iv_close_threshold": 7.0,      # 相应调整平仓阈值（原5.0）
+        "iv_stop_loss": 24.0,           # 提高止损阈值（原18.0）
+        "min_iv_diff": 5.0,             # 提高最小差值过滤（原3.0）
     },
 }
 
@@ -141,6 +157,10 @@ MONITOR_INTERVAL = 300  # 5分钟
 
 # 同一品种信号最小间隔（秒），避免重复通知
 SIGNAL_MIN_INTERVAL = 1800  # 30分钟
+
+# IV差变化幅度阈值（百分点），只有IV差变化超过此值才重新发送
+# 例如：上次IV差为10%，本次为12%，变化幅度为2%，如果阈值设为3%则不发送
+SIGNAL_IV_CHANGE_THRESHOLD = 3.0  # 3个百分点
 
 # 交易时段（北京时间）
 TRADING_HOURS = {

@@ -19,7 +19,8 @@ from config import (
     USD_CNY_RATE,
     LOG_LEVEL,
     LOG_FILE,
-    SHFE_TRADING_HOURS
+    SHFE_TRADING_HOURS,
+    SIGNAL_IV_CHANGE_THRESHOLD
 )
 from instruments import INSTRUMENTS, get_enabled_instruments
 from multi_data_fetcher import MultiInstrumentFetcher
@@ -77,6 +78,9 @@ class MultiInstrumentMonitor:
 
         # 上次信号时间（避免重复通知）
         self.last_signal_time: Dict[str, datetime] = {}
+        
+        # 上次信号的IV差值（用于判断变化幅度）
+        self.last_signal_iv_diff: Dict[str, float] = {}
 
         # 注册信号处理
         signal.signal(signal.SIGINT, self._signal_handler)
@@ -121,15 +125,40 @@ class MultiInstrumentMonitor:
 
         return in_day_session or in_night_session
 
-    def _should_send_signal(self, instrument: str) -> bool:
-        """检查是否应该发送信号（避免短时间重复）"""
+    def _should_send_signal(self, instrument: str, current_iv_diff: float) -> bool:
+        """
+        检查是否应该发送信号（避免短时间重复）
+        
+        发送条件：
+        1. 首次发送（无历史记录）
+        2. 距离上次发送超过30分钟 AND IV差变化超过阈值
+        """
         last_time = self.last_signal_time.get(instrument)
         if not last_time:
             return True
 
-        # 30分钟内不重复发送同一品种的信号
+        # 检查时间间隔（30分钟内不重复发送）
         elapsed = (datetime.now() - last_time).total_seconds()
-        return elapsed > 1800
+        if elapsed <= 1800:
+            return False
+        
+        # 检查IV差变化幅度
+        last_iv_diff = self.last_signal_iv_diff.get(instrument)
+        if last_iv_diff is None:
+            return True
+        
+        # 计算IV差的变化幅度（绝对值）
+        iv_change = abs(abs(current_iv_diff) - abs(last_iv_diff))
+        
+        if iv_change < SIGNAL_IV_CHANGE_THRESHOLD:
+            logger.info(
+                f"{instrument}: IV差变化 {iv_change:.2f}% "
+                f"小于阈值 {SIGNAL_IV_CHANGE_THRESHOLD}%，跳过通知 "
+                f"(上次: {last_iv_diff:+.2f}%, 本次: {current_iv_diff:+.2f}%)"
+            )
+            return False
+        
+        return True
 
     def check_once(self) -> Dict[str, any]:
         """执行一次全品种检查"""
@@ -208,7 +237,7 @@ class MultiInstrumentMonitor:
 
             # 发送信号通知
             for arb_signal in arb_signals:
-                if self._should_send_signal(arb_signal.instrument):
+                if self._should_send_signal(arb_signal.instrument, arb_signal.iv_diff):
                     inst_name = arb_signal.instrument_name
                     logger.info(f"发送 {inst_name} 套利信号...")
 
@@ -223,6 +252,9 @@ class MultiInstrumentMonitor:
                         self.last_signal_time[
                             arb_signal.instrument
                         ] = datetime.now()
+                        self.last_signal_iv_diff[
+                            arb_signal.instrument
+                        ] = arb_signal.iv_diff
                         logger.info(f"{inst_name} 通知发送成功")
                     else:
                         logger.error(f"{inst_name} 通知发送失败")

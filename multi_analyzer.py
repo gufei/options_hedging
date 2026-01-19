@@ -11,6 +11,7 @@ from enum import Enum
 from instruments import InstrumentConfig, INSTRUMENTS, CME_MONTH_CODES
 from multi_data_fetcher import InstrumentData
 from option_contracts import DomesticOptionContractFetcher, ForeignOptionContractFetcher
+from lot_calculator import calculate_lots, calculate_optimal_lots, calculate_minimal_lots, LotCalculation
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +46,8 @@ class MultiArbitrageSignal:
     risk_assessment: str
     expected_profit: float
     contracts: dict                    # 合约代码
+    lot_calculation: LotCalculation    # 最优手数计算
+    lot_calculation_minimal: LotCalculation  # 最小资金手数计算
     timestamp: datetime = field(default_factory=datetime.now)
 
     def to_message(self) -> str:
@@ -61,21 +64,41 @@ class MultiArbitrageSignal:
             SignalStrength.WEAK: "🟢弱"
         }
 
+        # 最优方案
+        optimal = self.lot_calculation
+        optimal_info = f"""<b>方案1: 最优对冲 (对冲比例 {optimal.hedge_ratio:.1f}%)</b>
+- 国内: {optimal.domestic_lots} 手 ({optimal.domestic_total_units:,.0f} {optimal.domestic_base_unit})
+- 境外: {optimal.foreign_lots} 手 ({optimal.foreign_total_units:,.0f} {optimal.foreign_base_unit})"""
+
+        # 最小资金方案
+        minimal = self.lot_calculation_minimal
+        minimal_info = f"""<b>方案2: 最小资金 (对冲比例 {minimal.hedge_ratio:.1f}%)</b>
+- 国内: {minimal.domestic_lots} 手 ({minimal.domestic_total_units:,.0f} {minimal.domestic_base_unit})
+- 境外: {minimal.foreign_lots} 手 ({minimal.foreign_total_units:,.0f} {minimal.foreign_base_unit})"""
+
         msg = f"""🔔 <b>【{self.instrument_name}】套利信号</b>
 
 ⏰ {self.timestamp.strftime('%Y-%m-%d %H:%M:%S')}
 
 📊 <b>市场数据</b>
-• 国内: {self.domestic_price:,.2f} {self.domestic_unit}
-• 境外: {self.foreign_price:,.4f} {self.foreign_unit}
-• 国内IV: {self.domestic_iv:.2f}%
-• 境外IV: {self.foreign_iv:.2f}%
-• <b>IV差值: {self.iv_diff:+.2f}%</b>
+- 国内: {self.domestic_price:,.2f} {self.domestic_unit}
+- 境外: {self.foreign_price:,.4f} {self.foreign_unit}
+- 国内IV: {self.domestic_iv:.2f}%
+- 境外IV: {self.foreign_iv:.2f}%
+- <b>IV差值: {self.iv_diff:+.2f}%</b>
 
 🎯 <b>交易信号</b>
-• 方向: {direction_text[self.direction]}
-• 强度: {strength_emoji[self.strength]}
-• 预期收益: {self.expected_profit:,.0f} 元/套
+- 方向: {direction_text[self.direction]}
+- 强度: {strength_emoji[self.strength]}
+- 预期收益: {self.expected_profit:,.0f} 元/套
+
+📦 <b>建议购买数量</b>
+
+{optimal_info}
+
+{minimal_info}
+
+💡 <i>根据资金情况选择：方案1对冲最优，方案2资金占用最小</i>
 
 📋 <b>操作指令</b>
 {self.recommended_action}
@@ -170,6 +193,10 @@ class MultiArbitrageAnalyzer:
         # 预估收益
         expected_profit = self._estimate_profit(abs(iv_diff), inst_data)
 
+        # 计算购买手数
+        lot_calc_optimal = calculate_optimal_lots(config, max_foreign_lots=10)
+        lot_calc_minimal = calculate_minimal_lots(config)
+
         signal = MultiArbitrageSignal(
             instrument=inst_data.instrument,
             instrument_name=config.name,
@@ -185,7 +212,9 @@ class MultiArbitrageAnalyzer:
             recommended_action=recommended_action,
             risk_assessment=risk_assessment,
             expected_profit=expected_profit,
-            contracts=contracts
+            contracts=contracts,
+            lot_calculation=lot_calc_optimal,
+            lot_calculation_minimal=lot_calc_minimal
         )
 
         return signal

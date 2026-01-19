@@ -19,12 +19,16 @@ class InstrumentConfig:
     domestic_exchange: str
     domestic_symbol: str
     domestic_unit: str
+    domestic_lot_size: float     # 每手数量
+    domestic_base_unit: str      # 基础单位
 
     # 境外市场
     foreign_exchange: str
     foreign_symbol: str
     foreign_yf_symbol: str
     foreign_unit: str
+    foreign_lot_size: float      # 每手数量
+    foreign_base_unit: str       # 基础单位
 
     # 套利参数
     iv_open_threshold: float     # 开仓阈值
@@ -48,10 +52,14 @@ def _load_instruments() -> Dict[str, InstrumentConfig]:
             domestic_exchange=cfg.get("domestic_exchange", ""),
             domestic_symbol=cfg.get("domestic_symbol", ""),
             domestic_unit=cfg.get("domestic_unit", ""),
+            domestic_lot_size=cfg.get("domestic_lot_size", 1.0),
+            domestic_base_unit=cfg.get("domestic_base_unit", ""),
             foreign_exchange=cfg.get("foreign_exchange", ""),
             foreign_symbol=cfg.get("foreign_symbol", ""),
             foreign_yf_symbol=cfg.get("foreign_yf_symbol", ""),
             foreign_unit=cfg.get("foreign_unit", ""),
+            foreign_lot_size=cfg.get("foreign_lot_size", 1.0),
+            foreign_base_unit=cfg.get("foreign_base_unit", ""),
             iv_open_threshold=cfg.get("iv_open_threshold", 8.0),
             iv_close_threshold=cfg.get("iv_close_threshold", 5.0),
             iv_stop_loss=cfg.get("iv_stop_loss", 18.0),

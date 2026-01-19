@@ -1583,3 +1583,1713 @@ KeyError: 'close'
 2026-01-19 00:07:39,928 - __main__ - INFO - 发送 白银 套利信号...
 2026-01-19 00:07:40,987 - telegram_notifier - INFO - Telegram 消息发送成功
 2026-01-19 00:07:40,987 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 09:00:23,621 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-19 09:00:24,151 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-19 09:00:24,248 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-19 09:00:24,249 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-19 09:00:24,249 - option_contracts - INFO - akshare 初始化成功
+2026-01-19 09:00:24,250 - option_contracts - INFO - yfinance 初始化成功
+2026-01-19 09:00:24,250 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-19 09:00:24,250 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-19 09:00:24,250 - __main__ - INFO - 启动多品种套利监控...
+2026-01-19 09:00:25,362 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:00:25,363 - __main__ - INFO - ==================================================
+2026-01-19 09:00:25,363 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:00:25,363 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:00:27,279 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:00:27,280 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:00:28,105 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:00:30,382 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:00:30,382 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:00:30,382 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:00:30,382 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:00:30,382 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:00:33,121 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:00:33,122 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:00:33,286 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:00:35,348 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:00:35,349 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:00:35,349 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:00:35,349 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:00:35,349 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:00:40,172 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:00:40,173 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:00:40,335 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:00:42,460 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:00:42,461 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:00:42,461 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:00:42,461 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:00:42,461 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:00:47,976 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:00:47,977 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:00:48,136 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:00:49,881 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:00:49,881 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:00:49,881 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:00:49,881 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:00:49,881 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:00:49,882 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:00:50,102 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:00:50,103 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:00:50,103 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:00:50,103 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:00:52,135 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:00:52,135 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:00:52,135 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:00:52,135 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:00:52,136 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:00:52,136 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 09:00:53,184 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:00:53,184 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 09:00:53,185 - __main__ - INFO - 等待 300 秒...
+2026-01-19 09:05:53,195 - __main__ - INFO - ==================================================
+2026-01-19 09:05:53,195 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:05:53,196 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:05:58,562 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:05:58,563 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:05:58,802 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:06:00,890 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:06:00,890 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:06:00,890 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:06:00,890 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:06:00,890 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:06:03,779 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:06:03,780 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:06:03,937 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:06:05,889 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:06:05,889 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:06:05,889 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:06:05,890 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:06:05,890 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:06:07,447 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:06:07,449 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:06:07,605 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:06:09,242 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:06:09,242 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:06:09,242 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:06:09,242 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:06:09,242 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:06:12,692 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:06:12,693 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:06:12,854 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:06:14,688 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:06:14,688 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:06:14,688 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:06:14,688 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:06:14,688 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:06:14,688 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:06:14,959 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:06:14,960 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:06:14,960 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:06:14,960 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:06:17,008 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:06:17,008 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:06:17,008 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:06:17,008 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:06:17,008 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:06:17,008 - __main__ - INFO - 等待 300 秒...
+2026-01-19 09:11:17,015 - __main__ - INFO - ==================================================
+2026-01-19 09:11:17,015 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:11:17,016 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:11:21,006 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:11:21,007 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:11:21,233 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:11:23,350 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:11:23,350 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:11:23,350 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:11:23,350 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:11:23,350 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:11:26,569 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:11:26,569 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:11:26,734 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:11:28,692 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:11:28,692 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:11:28,692 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:11:28,692 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:11:28,692 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:11:32,800 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:11:32,801 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:11:32,963 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:11:34,710 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:11:34,711 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:11:34,711 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:11:34,711 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:11:34,711 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:11:37,902 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:11:37,903 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:11:38,065 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:11:39,914 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:11:39,914 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:11:39,914 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:11:39,915 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:11:39,915 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:11:39,915 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:11:40,167 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:11:40,167 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:11:40,167 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:11:40,168 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:11:42,114 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:11:42,114 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:11:42,114 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:11:42,114 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:11:42,114 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:11:42,114 - __main__ - INFO - 等待 300 秒...
+2026-01-19 09:16:42,120 - __main__ - INFO - ==================================================
+2026-01-19 09:16:42,120 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:16:42,120 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:16:44,807 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:16:44,808 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:16:45,015 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:16:47,247 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:16:47,247 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:16:47,247 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:16:47,247 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:16:47,247 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:16:53,213 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:16:53,214 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:16:53,357 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:16:55,322 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:16:55,323 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:16:55,323 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:16:55,323 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:16:55,323 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:17:01,101 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:17:01,102 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:17:01,255 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:17:03,468 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:17:03,468 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:17:03,468 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:17:03,468 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:17:03,469 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:17:08,292 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:17:08,293 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:17:08,443 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:17:10,127 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:17:10,127 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:17:10,127 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:17:10,127 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:17:10,127 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:17:10,127 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:17:10,296 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:17:10,296 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:17:10,296 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:17:10,296 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:17:12,182 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:17:12,182 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:17:12,182 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:17:12,182 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:17:12,182 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:17:12,183 - __main__ - INFO - 等待 300 秒...
+2026-01-19 09:22:12,195 - __main__ - INFO - ==================================================
+2026-01-19 09:22:12,195 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:22:12,196 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:22:18,321 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:22:18,322 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:22:18,595 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:22:20,743 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:22:20,743 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:22:20,743 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:22:20,743 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:22:20,743 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:22:24,990 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:22:24,992 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:22:25,138 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:22:27,136 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:22:27,137 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:22:27,137 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:22:27,137 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:22:27,137 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:22:43,447 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:22:43,449 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:22:43,611 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:22:45,583 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:22:45,583 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:22:45,584 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:22:45,584 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:22:45,584 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:22:47,370 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:22:47,371 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:22:47,532 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:22:49,482 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:22:49,482 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:22:49,482 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:22:49,482 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:22:49,482 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:22:49,483 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:22:49,661 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:22:49,661 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:22:49,661 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:22:49,661 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:22:51,603 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:22:51,603 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:22:51,603 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:22:51,603 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:22:51,603 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:22:51,604 - __main__ - INFO - 等待 300 秒...
+2026-01-19 09:27:51,612 - __main__ - INFO - ==================================================
+2026-01-19 09:27:51,612 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:27:51,613 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:27:54,493 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:27:54,494 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:27:54,744 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:27:56,871 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:27:56,871 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:27:56,871 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:27:56,872 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:27:56,872 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:28:01,357 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:28:01,358 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:28:01,502 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:28:03,592 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:28:03,592 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:28:03,592 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:28:03,592 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:28:03,592 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:28:07,019 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:28:07,020 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:28:07,169 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:28:08,940 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:28:08,940 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:28:08,940 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:28:08,940 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:28:08,941 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:28:13,416 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:28:13,417 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:28:13,567 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:28:15,263 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:28:15,264 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:28:15,264 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:28:15,264 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:28:15,264 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:28:15,264 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:28:15,455 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:28:15,456 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:28:15,456 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:28:15,456 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:28:17,908 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:28:17,909 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:28:17,909 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:28:17,910 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:28:17,910 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:28:17,910 - __main__ - INFO - 等待 300 秒...
+2026-01-19 09:28:19,566 - __main__ - INFO - 收到信号 2，准备停止...
+2026-01-19 09:28:19,566 - __main__ - INFO - 停止监控...
+2026-01-19 09:28:20,563 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:28:57,068 - __main__ - INFO - 收到信号 2，准备停止...
+2026-01-19 09:28:57,068 - __main__ - INFO - 停止监控...
+2026-01-19 09:28:58,047 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:29:00,691 - __main__ - INFO - 收到信号 2，准备停止...
+2026-01-19 09:29:00,691 - __main__ - INFO - 停止监控...
+2026-01-19 09:29:01,202 - __main__ - INFO - 收到信号 2，准备停止...
+2026-01-19 09:29:01,202 - __main__ - INFO - 停止监控...
+2026-01-19 09:29:02,192 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:29:02,659 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:33:17,921 - __main__ - INFO - 停止监控...
+2026-01-19 09:33:18,965 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:45:13,195 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-19 09:45:13,700 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-19 09:45:13,788 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-19 09:45:13,789 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-19 09:45:13,789 - option_contracts - INFO - akshare 初始化成功
+2026-01-19 09:45:13,789 - option_contracts - INFO - yfinance 初始化成功
+2026-01-19 09:45:13,789 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-19 09:45:13,789 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-19 09:45:13,789 - __main__ - INFO - 启动多品种套利监控...
+2026-01-19 09:45:14,925 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:45:14,925 - __main__ - INFO - ==================================================
+2026-01-19 09:45:14,925 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:45:14,925 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:45:16,789 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:45:16,790 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:45:17,525 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:45:19,593 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:45:19,593 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:45:19,593 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:45:19,594 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:45:19,594 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:45:22,841 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:45:22,842 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:45:23,010 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:45:24,905 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:45:24,905 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:45:24,906 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:45:24,906 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:45:24,906 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:45:29,866 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:45:29,867 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:45:30,056 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:45:31,644 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:45:31,644 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:45:31,644 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:45:31,644 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:45:31,644 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:45:36,575 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:45:36,575 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:45:36,765 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:45:38,443 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:45:38,443 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:45:38,443 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:45:38,443 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:45:38,443 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:45:38,443 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:45:38,705 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:45:38,705 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:45:38,705 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:45:38,705 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:45:40,629 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:45:40,629 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:45:40,629 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:45:40,630 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:45:40,630 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:45:40,630 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 09:45:41,689 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:45:41,690 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 09:45:41,691 - __main__ - INFO - 等待 300 秒...
+2026-01-19 09:50:20,304 - __main__ - INFO - 收到信号 2，准备停止...
+2026-01-19 09:50:20,486 - __main__ - INFO - 停止监控...
+2026-01-19 09:50:21,548 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:50:21,549 - __main__ - INFO - 程序已停止
+2026-01-19 09:50:24,797 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-19 09:50:25,168 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-19 09:50:25,227 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-19 09:50:25,227 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-19 09:50:25,228 - option_contracts - INFO - akshare 初始化成功
+2026-01-19 09:50:25,228 - option_contracts - INFO - yfinance 初始化成功
+2026-01-19 09:50:25,228 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-19 09:50:25,228 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-19 09:50:25,228 - __main__ - INFO - 启动多品种套利监控...
+2026-01-19 09:50:26,244 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:50:26,244 - __main__ - INFO - ==================================================
+2026-01-19 09:50:26,245 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:50:26,245 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:50:31,783 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:50:31,785 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:50:32,433 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:50:34,467 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:50:34,467 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:50:34,467 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:50:34,467 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:50:34,467 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:50:37,036 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:50:37,037 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:50:37,179 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:50:39,388 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:50:39,389 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:50:39,389 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:50:39,389 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:50:39,389 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:50:44,004 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:50:44,005 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:50:44,146 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:50:46,245 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:50:46,245 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:50:46,245 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:50:46,246 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:50:46,246 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:50:48,943 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:50:48,944 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:50:49,086 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:50:50,735 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:50:50,735 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:50:50,735 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:50:50,736 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:50:50,736 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:50:50,736 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:50:51,094 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:50:51,094 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:50:51,094 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:50:51,094 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:50:52,990 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:50:52,990 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:50:52,990 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:50:52,990 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:50:52,990 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:50:52,991 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 09:50:53,982 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 09:50:53,982 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 09:50:53,983 - __main__ - INFO - 等待 300 秒...
+2026-01-19 09:55:56,959 - __main__ - INFO - ==================================================
+2026-01-19 09:55:56,959 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 09:55:56,959 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 09:56:00,555 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:56:00,556 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 09:56:00,763 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 09:56:03,004 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 09:56:03,005 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 09:56:03,005 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 09:56:03,005 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 09:56:03,005 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 09:56:05,840 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:56:05,841 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 09:56:06,119 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 09:56:07,731 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 09:56:07,731 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 09:56:07,732 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 09:56:07,732 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 09:56:07,732 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 09:56:12,690 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:56:12,691 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 09:56:12,851 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:56:14,484 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:56:14,484 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 09:56:14,484 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 09:56:14,484 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 09:56:14,484 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 09:56:16,873 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 09:56:16,874 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 09:56:17,016 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 09:56:18,651 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 09:56:18,652 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 09:56:18,652 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 09:56:18,652 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 09:56:18,652 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 09:56:18,652 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 09:56:18,871 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 09:56:18,871 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 09:56:18,871 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 09:56:18,871 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 09:56:20,726 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 09:56:20,726 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 09:56:20,726 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 09:56:20,726 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 09:56:20,726 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 09:56:20,726 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:01:23,660 - __main__ - INFO - ==================================================
+2026-01-19 10:01:23,661 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:01:23,661 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:01:27,140 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:01:27,141 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:01:27,388 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:01:29,616 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:01:29,616 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:01:29,616 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:01:29,617 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:01:29,617 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:01:33,230 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:01:33,231 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:01:33,390 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:01:35,343 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:01:35,343 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:01:35,343 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:01:35,343 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:01:35,344 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:01:39,732 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:01:39,733 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:01:39,903 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:01:41,587 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:01:41,587 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:01:41,587 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:01:41,587 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:01:41,587 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:01:45,488 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:01:45,489 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:01:45,651 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:01:47,624 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:01:47,624 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:01:47,624 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:01:47,624 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:01:47,624 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:01:47,625 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:01:47,849 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:01:47,849 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:01:47,849 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:01:47,849 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:01:49,838 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:01:49,838 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:01:49,838 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:01:49,838 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:01:49,838 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:01:49,838 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:06:51,838 - __main__ - INFO - ==================================================
+2026-01-19 10:06:51,838 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:06:51,838 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:06:55,947 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:06:55,948 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:06:56,196 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:06:58,459 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:06:58,460 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:06:58,460 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:06:58,460 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:06:58,460 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:07:01,144 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:07:01,145 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:07:01,304 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:07:03,369 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:07:03,369 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:07:03,369 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:07:03,370 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:07:03,370 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:07:05,928 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:07:05,929 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:07:06,106 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:07:08,148 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:07:08,148 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:07:08,148 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:07:08,148 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:07:08,148 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:07:12,413 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:07:12,414 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:07:12,574 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:07:14,282 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:07:14,282 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:07:14,283 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:07:14,283 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:07:14,283 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:07:14,284 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:07:14,469 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:07:14,469 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:07:14,469 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:07:14,469 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:07:16,411 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:07:16,411 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:07:16,411 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:07:16,411 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:07:16,411 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:07:16,412 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:12:16,545 - __main__ - INFO - ==================================================
+2026-01-19 10:12:16,545 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:12:16,545 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:12:28,523 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:12:28,524 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:12:29,168 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:12:31,803 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:12:31,803 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:12:31,803 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:12:31,803 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:12:31,803 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:12:43,439 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:12:43,440 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:12:43,691 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:12:45,737 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:12:45,737 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:12:45,738 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:12:45,738 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:12:45,738 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:12:58,191 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:12:58,193 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:12:58,422 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:13:00,202 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:13:00,202 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:13:00,202 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:13:00,202 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:13:00,203 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:13:11,053 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:13:11,054 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:13:11,258 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:13:13,072 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:13:13,072 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:13:13,073 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:13:13,073 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:13:13,073 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:13:13,073 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:13:14,840 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:13:14,840 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:13:14,840 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:13:14,840 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:13:17,947 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:13:17,947 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:13:17,947 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:13:17,947 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:13:17,947 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:13:17,948 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:18:18,078 - __main__ - INFO - ==================================================
+2026-01-19 10:18:18,078 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:18:18,078 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:18:29,357 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:18:29,358 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:18:29,956 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:18:32,877 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:18:32,877 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:18:32,877 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:18:32,877 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:18:32,877 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:18:42,617 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:18:42,618 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:18:42,860 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:18:45,136 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:18:45,136 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:18:45,136 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:18:45,136 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:18:45,136 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:18:55,710 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:18:55,711 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:18:55,927 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:18:58,209 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:18:58,209 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:18:58,209 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:18:58,210 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:18:58,210 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:19:09,285 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:19:09,286 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:19:09,525 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:19:11,186 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:19:11,187 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:19:11,187 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:19:11,187 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:19:11,187 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:19:11,187 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:19:13,234 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:19:13,234 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:19:13,234 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:19:13,234 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:19:15,909 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:19:15,909 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:19:15,909 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:19:15,909 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:19:15,909 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:19:15,909 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:24:18,086 - __main__ - INFO - ==================================================
+2026-01-19 10:24:18,086 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:24:18,086 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:24:29,740 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:24:29,741 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:24:30,407 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:24:33,120 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:24:33,120 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:24:33,121 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:24:33,121 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:24:33,121 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:24:44,381 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:24:44,382 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:24:44,619 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:24:46,768 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:24:46,768 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:24:46,768 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:24:46,768 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:24:46,769 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:24:58,703 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:24:58,704 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:24:58,926 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:25:00,611 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:25:00,611 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:25:00,612 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:25:00,612 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:25:00,612 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:25:06,745 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:25:06,746 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:25:06,950 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:25:08,829 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:25:08,829 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:25:08,829 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:25:08,829 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:25:08,829 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:25:08,829 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:25:09,139 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:25:09,139 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:25:09,139 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:25:09,139 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:25:11,126 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:25:11,126 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:25:11,127 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:25:11,127 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:25:11,127 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:25:11,127 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 10:25:12,153 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 10:25:12,155 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 10:25:12,155 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:30:12,289 - __main__ - INFO - ==================================================
+2026-01-19 10:30:12,289 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:30:12,289 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:30:23,983 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:30:23,984 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:30:24,609 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:30:27,475 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:30:27,476 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:30:27,476 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:30:27,476 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:30:27,476 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:30:37,198 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:30:37,199 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:30:37,416 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:30:39,712 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:30:39,713 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:30:39,713 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:30:39,713 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:30:39,713 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:30:50,915 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:30:50,916 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:30:51,254 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:30:53,603 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:30:53,603 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:30:53,603 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:30:53,603 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:30:53,603 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:31:04,992 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:31:04,993 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:31:05,216 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:31:07,106 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:31:07,107 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:31:07,107 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:31:07,107 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:31:07,107 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:31:07,107 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:31:08,841 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:31:08,841 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:31:08,841 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:31:08,842 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:31:11,345 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:31:11,345 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:31:11,345 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:31:11,345 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:31:11,346 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:31:11,346 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:36:11,483 - __main__ - INFO - ==================================================
+2026-01-19 10:36:11,483 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:36:11,484 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:36:23,348 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:36:23,350 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:36:23,969 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:36:26,687 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:36:26,688 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:36:26,688 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:36:26,688 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:36:26,688 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:36:37,386 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:36:37,387 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:36:37,608 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:36:39,615 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:36:39,615 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:36:39,616 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:36:39,616 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:36:39,616 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:36:50,740 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:36:50,741 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:36:50,968 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:36:52,668 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:36:52,668 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:36:52,669 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:36:52,669 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:36:52,669 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:37:03,004 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:37:03,005 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:37:03,217 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:37:05,137 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:37:05,137 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:37:05,137 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:37:05,137 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:37:05,137 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:37:05,137 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:37:07,192 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:37:07,192 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:37:07,192 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:37:07,192 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:37:10,098 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:37:10,099 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:37:10,099 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:37:10,099 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:37:10,099 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:37:10,099 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:42:10,229 - __main__ - INFO - ==================================================
+2026-01-19 10:42:10,229 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:42:10,229 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:42:25,847 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:42:25,848 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:42:26,525 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:42:29,197 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:42:29,197 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:42:29,197 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:42:29,198 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:42:29,198 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:42:40,431 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:42:40,432 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:42:40,654 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:42:42,834 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:42:42,834 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:42:42,834 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:42:42,834 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:42:42,834 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:42:55,003 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:42:55,004 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:42:55,258 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:42:57,090 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:42:57,090 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:42:57,090 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:42:57,091 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:42:57,091 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:43:07,651 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:43:07,652 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:43:07,848 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:43:09,690 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:43:09,690 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:43:09,691 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:43:09,691 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:43:09,691 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:43:09,691 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:43:11,854 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:43:11,855 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:43:11,855 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:43:11,855 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:43:14,179 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:43:14,180 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:43:14,180 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:43:14,180 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:43:14,180 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:43:14,180 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:48:14,314 - __main__ - INFO - ==================================================
+2026-01-19 10:48:14,314 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:48:14,314 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:48:26,288 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:48:26,289 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:48:26,993 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:48:29,935 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:48:29,935 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:48:29,935 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:48:29,936 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:48:29,936 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:48:40,942 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:48:40,943 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:48:41,173 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:48:43,262 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:48:43,262 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:48:43,262 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:48:43,262 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:48:43,262 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:48:54,438 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:48:54,439 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:48:54,680 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:48:57,086 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:48:57,087 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:48:57,087 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:48:57,087 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:48:57,087 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:49:07,438 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:49:07,439 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:49:07,652 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:49:09,454 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:49:09,454 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:49:09,454 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:49:09,454 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:49:09,454 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:49:09,454 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:49:11,332 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:49:11,332 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:49:11,333 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:49:11,333 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:49:13,859 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:49:13,859 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:49:13,860 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:49:13,860 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:49:13,860 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:49:13,860 - __main__ - INFO - 等待 300 秒...
+2026-01-19 10:54:16,796 - __main__ - INFO - ==================================================
+2026-01-19 10:54:16,797 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 10:54:16,797 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 10:54:28,231 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:54:28,232 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 10:54:28,870 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 10:54:31,485 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 10:54:31,485 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 10:54:31,485 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 10:54:31,485 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 10:54:31,485 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 10:54:41,836 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:54:41,837 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 10:54:42,074 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 10:54:43,834 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 10:54:43,834 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 10:54:43,834 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 10:54:43,835 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 10:54:43,835 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 10:54:53,979 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:54:53,980 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 10:54:54,197 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:54:56,442 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:54:56,442 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 10:54:56,442 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 10:54:56,442 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 10:54:56,442 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 10:55:08,067 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 10:55:08,068 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 10:55:08,443 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 10:55:10,336 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 10:55:10,337 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 10:55:10,337 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 10:55:10,337 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 10:55:10,337 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 10:55:10,337 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 10:55:12,014 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 10:55:12,014 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 10:55:12,014 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 10:55:12,015 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 10:55:14,232 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 10:55:14,232 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 10:55:14,232 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 10:55:14,232 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 10:55:14,232 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 10:55:14,232 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 10:55:15,613 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 10:55:15,614 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 10:55:15,614 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:00:18,549 - __main__ - INFO - ==================================================
+2026-01-19 11:00:18,549 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:00:18,549 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:00:29,303 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:00:29,305 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:00:29,945 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:00:32,811 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:00:32,811 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:00:32,811 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:00:32,811 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:00:32,812 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:00:44,069 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:00:44,070 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:00:44,307 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:00:46,057 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:00:46,057 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:00:46,057 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:00:46,057 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:00:46,057 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:00:56,322 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:00:56,323 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:00:56,565 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:00:58,361 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:00:58,361 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:00:58,361 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:00:58,361 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:00:58,362 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:01:08,844 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:01:08,845 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:01:09,082 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:01:10,970 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:01:10,970 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:01:10,970 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:01:10,970 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:01:10,970 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:01:10,970 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:01:12,667 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:01:12,667 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:01:12,667 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:01:12,667 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:01:15,196 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:01:15,196 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:01:15,196 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:01:15,197 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:01:15,197 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:01:15,197 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:06:18,002 - __main__ - INFO - ==================================================
+2026-01-19 11:06:18,002 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:06:18,002 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:06:29,652 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:06:29,653 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:06:30,241 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:06:32,912 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:06:32,912 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:06:32,913 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:06:32,913 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:06:32,913 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:06:44,526 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:06:44,527 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:06:44,824 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:06:46,574 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:06:46,574 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:06:46,574 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:06:46,575 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:06:46,575 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:06:57,153 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:06:57,154 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:06:57,378 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:06:59,256 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:06:59,257 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:06:59,257 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:06:59,257 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:06:59,257 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:07:10,507 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:07:10,508 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:07:10,718 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:07:12,445 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:07:12,445 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:07:12,445 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:07:12,445 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:07:12,445 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:07:12,445 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:07:14,537 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:07:14,537 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:07:14,537 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:07:14,537 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:07:17,385 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:07:17,386 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:07:17,386 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:07:17,386 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:07:17,386 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:07:17,386 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:12:20,166 - __main__ - INFO - ==================================================
+2026-01-19 11:12:20,166 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:12:20,167 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:12:30,382 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:12:30,383 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:12:31,053 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:12:33,725 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:12:33,725 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:12:33,725 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:12:33,726 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:12:33,726 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:12:44,410 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:12:44,411 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:12:44,669 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:12:46,813 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:12:46,814 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:12:46,814 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:12:46,814 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:12:46,814 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:12:56,581 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:12:56,582 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:12:56,817 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:12:59,140 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:12:59,140 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:12:59,140 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:12:59,140 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:12:59,140 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:13:09,140 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:13:09,141 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:13:09,329 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:13:11,388 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:13:11,388 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:13:11,389 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:13:11,389 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:13:11,389 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:13:11,389 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:13:13,255 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:13:13,256 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:13:13,256 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:13:13,256 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:13:15,578 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:13:15,578 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:13:15,578 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:13:15,578 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:13:15,578 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:13:15,578 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:18:17,844 - __main__ - INFO - ==================================================
+2026-01-19 11:18:17,844 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:18:17,844 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:18:29,211 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:18:29,212 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:18:29,804 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:18:32,371 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:18:32,371 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:18:32,371 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:18:32,371 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:18:32,371 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:18:43,616 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:18:43,617 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:18:43,841 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:18:45,900 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:18:45,900 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:18:45,900 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:18:45,900 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:18:45,900 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:18:56,467 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:18:56,468 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:18:56,711 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:18:58,787 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:18:58,787 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:18:58,787 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:18:58,787 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:18:58,787 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:19:09,804 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:19:09,805 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:19:10,026 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:19:11,804 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:19:11,804 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:19:11,804 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:19:11,805 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:19:11,805 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:19:11,805 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:19:13,914 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:19:13,914 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:19:13,914 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:19:13,914 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:19:16,228 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:19:16,228 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:19:16,229 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:19:16,229 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:19:16,229 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:19:16,229 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:24:18,627 - __main__ - INFO - ==================================================
+2026-01-19 11:24:18,627 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:24:18,627 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:24:29,054 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:24:29,055 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:24:29,691 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:24:32,286 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:24:32,287 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:24:32,287 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:24:32,287 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:24:32,287 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:24:43,035 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:24:43,036 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:24:43,274 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:24:45,351 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:24:45,351 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:24:45,351 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:24:45,351 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:24:45,351 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:24:56,941 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:24:56,942 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:24:57,185 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:24:59,355 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:24:59,355 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:24:59,355 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:24:59,355 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:24:59,355 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:25:10,269 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:25:10,270 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:25:10,508 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:25:12,503 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:25:12,503 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:25:12,503 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:25:12,503 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:25:12,503 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:25:12,503 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:25:14,453 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:25:14,453 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:25:14,453 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:25:14,453 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:25:16,753 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:25:16,753 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:25:16,753 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:25:16,753 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:25:16,753 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:25:16,753 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 11:25:18,222 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 11:25:18,223 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 11:25:18,223 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:30:20,946 - __main__ - INFO - ==================================================
+2026-01-19 11:30:20,946 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:30:20,947 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:30:32,768 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:30:32,770 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:30:33,468 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:30:36,299 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:30:36,299 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:30:36,299 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:30:36,299 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:30:36,299 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:30:47,805 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:30:47,806 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:30:48,009 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:30:49,748 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:30:49,748 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:30:49,749 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:30:49,749 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:30:49,749 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:31:00,498 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:31:00,499 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:31:00,932 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:31:03,171 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:31:03,171 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:31:03,171 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:31:03,171 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:31:03,172 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:31:12,301 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:31:12,302 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:31:12,727 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:31:14,574 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:31:14,574 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:31:14,574 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:31:14,575 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:31:14,575 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:31:14,575 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:31:16,383 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:31:16,384 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:31:16,384 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:31:16,384 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:31:18,820 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:31:18,820 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:31:18,820 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:31:18,821 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:31:18,821 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:31:18,821 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:36:21,562 - __main__ - INFO - ==================================================
+2026-01-19 11:36:21,562 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:36:21,562 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:36:32,461 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:36:32,462 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:36:33,064 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:36:35,626 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:36:35,626 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:36:35,626 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:36:35,626 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:36:35,626 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:36:46,371 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:36:46,372 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:36:46,609 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:36:48,841 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:36:48,841 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:36:48,842 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:36:48,842 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:36:48,842 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:37:00,086 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:37:00,087 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:37:00,290 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:37:02,246 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:37:02,247 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:37:02,247 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:37:02,247 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:37:02,247 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:37:12,927 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:37:12,929 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:37:13,141 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:37:15,107 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:37:15,108 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:37:15,108 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:37:15,108 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:37:15,108 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:37:15,108 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:37:17,075 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:37:17,076 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:37:17,076 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:37:17,076 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:37:19,730 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:37:19,731 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:37:19,731 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:37:19,731 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:37:19,731 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:37:19,731 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:42:22,543 - __main__ - INFO - ==================================================
+2026-01-19 11:42:22,544 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:42:22,544 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:42:33,877 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:42:33,879 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:42:34,503 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:42:37,213 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:42:37,213 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:42:37,213 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:42:37,214 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:42:37,214 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:42:48,602 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:42:48,603 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:42:48,814 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:42:51,360 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:42:51,360 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:42:51,361 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:42:51,361 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:42:51,361 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:43:02,119 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:43:02,121 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:43:02,331 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:43:04,058 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:43:04,059 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:43:04,059 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:43:04,059 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:43:04,059 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:43:14,990 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:43:14,991 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:43:15,263 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:43:17,084 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:43:17,084 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:43:17,084 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:43:17,084 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:43:17,084 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:43:17,084 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:43:19,179 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:43:19,179 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:43:19,179 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:43:19,179 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:43:21,962 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:43:21,963 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:43:21,963 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:43:21,963 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:43:21,963 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:43:21,963 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:48:24,842 - __main__ - INFO - ==================================================
+2026-01-19 11:48:24,843 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:48:24,843 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:48:36,147 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:48:36,148 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:48:36,874 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:48:39,492 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:48:39,492 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:48:39,492 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:48:39,492 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:48:39,492 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:48:50,224 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:48:50,225 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:48:50,567 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:48:52,440 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:48:52,440 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:48:52,440 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:48:52,440 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:48:52,440 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:49:02,513 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:49:02,514 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:49:02,711 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:49:04,985 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:49:04,985 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:49:04,985 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:49:04,985 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:49:04,986 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:49:14,849 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:49:14,850 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:49:15,097 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:49:16,999 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:49:16,999 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:49:16,999 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:49:16,999 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:49:17,000 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:49:17,000 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:49:18,872 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:49:18,873 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:49:18,873 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:49:18,874 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:49:21,246 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:49:21,246 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:49:21,246 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:49:21,246 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:49:21,247 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:49:21,247 - __main__ - INFO - 等待 300 秒...
+2026-01-19 11:54:24,214 - __main__ - INFO - ==================================================
+2026-01-19 11:54:24,214 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 11:54:24,215 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 11:54:35,229 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:54:35,230 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 11:54:35,868 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 11:54:38,599 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 11:54:38,599 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 11:54:38,599 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 11:54:38,599 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 11:54:38,600 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 11:54:49,579 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:54:49,581 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 11:54:49,818 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 11:54:52,009 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 11:54:52,010 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 11:54:52,010 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 11:54:52,010 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 11:54:52,010 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 11:55:03,191 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:55:03,192 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 11:55:03,430 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:55:05,234 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:55:05,234 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 11:55:05,234 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 11:55:05,235 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 11:55:05,235 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 11:55:15,212 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 11:55:15,213 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 11:55:15,569 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 11:55:17,226 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 11:55:17,227 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 11:55:17,227 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 11:55:17,227 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 11:55:17,227 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 11:55:17,228 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 11:55:19,352 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 11:55:19,352 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 11:55:19,352 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 11:55:19,352 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 11:55:22,469 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 11:55:22,470 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 11:55:22,470 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 11:55:22,470 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 11:55:22,470 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 11:55:22,471 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 11:55:23,945 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 11:55:23,945 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 11:55:23,945 - __main__ - INFO - 等待 300 秒...
+2026-01-19 12:00:26,814 - __main__ - INFO - ==================================================
+2026-01-19 12:00:26,814 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 12:00:26,814 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 12:00:38,189 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:00:38,190 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 12:00:38,772 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 12:00:41,486 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 12:00:41,487 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 12:00:41,487 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 12:00:41,487 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 12:00:41,487 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 12:00:52,699 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:00:52,700 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 12:00:52,943 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 12:00:54,974 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 12:00:54,975 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 12:00:54,975 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 12:00:54,975 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 12:00:54,975 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 12:01:05,855 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:01:05,856 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 12:01:06,049 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:01:08,307 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:01:08,308 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 12:01:08,308 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 12:01:08,308 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 12:01:08,308 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 12:01:18,290 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:01:18,291 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 12:01:18,495 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 12:01:20,465 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 12:01:20,465 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 12:01:20,466 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 12:01:20,466 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 12:01:20,466 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 12:01:20,466 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 12:01:22,234 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 12:01:22,234 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 12:01:22,234 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 12:01:22,234 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:01:24,606 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:01:24,607 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 12:01:24,607 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 12:01:24,607 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 12:01:24,607 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 12:01:24,607 - __main__ - INFO - 等待 300 秒...
+2026-01-19 12:06:27,397 - __main__ - INFO - ==================================================
+2026-01-19 12:06:27,397 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 12:06:27,397 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 12:06:39,008 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:06:39,009 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 12:06:39,629 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 12:06:42,521 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 12:06:42,521 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 12:06:42,521 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 12:06:42,522 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 12:06:42,522 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 12:06:54,271 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:06:54,272 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 12:06:54,483 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 12:06:56,492 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 12:06:56,492 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 12:06:56,492 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 12:06:56,492 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 12:06:56,492 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 12:07:07,898 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:07:07,900 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 12:07:08,100 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:07:09,752 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:07:09,752 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 12:07:09,752 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 12:07:09,752 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 12:07:09,752 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 12:07:20,760 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:07:20,762 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 12:07:21,006 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 12:07:22,848 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 12:07:22,848 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 12:07:22,848 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 12:07:22,849 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 12:07:22,849 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 12:07:22,849 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 12:07:24,783 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 12:07:24,783 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 12:07:24,783 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 12:07:24,783 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:07:27,123 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:07:27,123 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 12:07:27,124 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 12:07:27,124 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 12:07:27,124 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 12:07:27,124 - __main__ - INFO - 等待 300 秒...
+2026-01-19 12:12:29,873 - __main__ - INFO - ==================================================
+2026-01-19 12:12:29,873 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 12:12:29,873 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 12:12:41,596 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:12:41,597 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 12:12:42,235 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 12:12:44,833 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 12:12:44,834 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 12:12:44,834 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 12:12:44,834 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 12:12:44,834 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 12:12:55,508 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:12:55,509 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 12:12:55,715 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 12:12:57,787 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 12:12:57,787 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 12:12:57,788 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 12:12:57,788 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 12:12:57,788 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 12:13:07,299 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:13:07,300 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 12:13:07,521 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:13:09,230 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:13:09,230 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 12:13:09,230 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 12:13:09,231 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 12:13:09,231 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 12:13:20,153 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:13:20,154 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 12:13:20,396 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 12:13:22,433 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 12:13:22,434 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 12:13:22,434 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 12:13:22,434 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 12:13:22,434 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 12:13:22,434 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 12:13:24,212 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 12:13:24,212 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 12:13:24,212 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 12:13:24,212 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:13:26,728 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:13:26,729 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 12:13:26,729 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 12:13:26,729 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 12:13:26,729 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 12:13:26,729 - __main__ - INFO - 等待 300 秒...
+2026-01-19 12:18:29,618 - __main__ - INFO - ==================================================
+2026-01-19 12:18:29,618 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 12:18:29,618 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 12:18:31,700 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:18:31,701 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 12:18:32,077 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 12:18:34,355 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 12:18:34,355 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 12:18:34,355 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 12:18:34,355 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 12:18:34,355 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 12:18:37,342 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:18:37,343 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 12:18:37,504 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 12:18:39,308 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 12:18:39,309 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 12:18:39,309 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 12:18:39,309 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 12:18:39,309 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 12:18:42,237 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:18:42,238 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 12:18:42,400 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:18:44,150 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:18:44,150 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 12:18:44,150 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 12:18:44,150 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 12:18:44,150 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 12:18:47,295 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:18:47,297 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 12:18:47,456 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 12:18:49,188 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 12:18:49,188 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 12:18:49,188 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 12:18:49,188 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 12:18:49,188 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 12:18:49,189 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 12:18:49,676 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 12:18:49,677 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 12:18:49,677 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 12:18:49,677 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:18:51,623 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:18:51,623 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 12:18:51,624 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 12:18:51,625 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 12:18:51,625 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 12:18:51,625 - __main__ - INFO - 等待 300 秒...
+2026-01-19 12:23:54,528 - __main__ - INFO - ==================================================
+2026-01-19 12:23:54,529 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 12:23:54,529 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 12:23:58,264 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:23:58,265 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 12:23:58,506 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 12:24:01,079 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 12:24:01,080 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 12:24:01,080 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 12:24:01,080 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 12:24:01,080 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 12:24:06,874 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:24:06,875 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 12:24:07,031 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 12:24:08,989 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 12:24:08,990 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 12:24:08,990 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 12:24:08,990 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 12:24:08,990 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 12:24:12,603 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:24:12,604 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 12:24:12,763 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:24:14,934 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:24:14,934 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 12:24:14,934 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 12:24:14,934 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 12:24:14,934 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 12:24:19,158 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:24:19,160 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 12:24:19,318 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 12:24:21,073 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 12:24:21,074 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 12:24:21,074 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 12:24:21,074 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 12:24:21,074 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 12:24:21,074 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 12:24:21,562 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 12:24:21,562 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 12:24:21,562 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 12:24:21,562 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:24:23,508 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:24:23,508 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 12:24:23,509 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 12:24:23,509 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 12:24:23,509 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 12:24:23,509 - __main__ - INFO - 等待 300 秒...
+2026-01-19 12:29:26,563 - __main__ - INFO - ==================================================
+2026-01-19 12:29:26,563 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 12:29:26,563 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 12:29:31,955 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:29:31,956 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 12:29:32,198 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 12:29:34,269 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 12:29:34,269 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 12:29:34,269 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 12:29:34,269 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 12:29:34,270 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 12:29:38,904 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:29:38,905 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 12:29:39,068 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
+2026-01-19 12:29:41,094 - cme_web_scraper - INFO - [Barchart] gold 期权IV获取成功: 20.98%
+2026-01-19 12:29:41,094 - multi_data_fetcher - INFO - [Web] gold 从网页获取期权IV: 20.98%
+2026-01-19 12:29:41,094 - multi_data_fetcher - INFO - [OK] gold 境外数据获取成功 (ticker: GC=F)
+2026-01-19 12:29:41,095 - multi_data_fetcher - INFO -   黄金: 国内IV=23.84% 境外IV=20.98% 差值=-2.86%
+2026-01-19 12:29:41,095 - multi_data_fetcher - INFO - 获取 白银 数据...
+2026-01-19 12:29:44,735 - multi_data_fetcher - INFO - silver 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:29:44,736 - multi_data_fetcher - INFO - [真实IV] silver 国内期权IV从SHFE获取: 89.85% (合约: ag2602)
+2026-01-19 12:29:44,897 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:29:46,456 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:29:46,456 - multi_data_fetcher - INFO - [Web] silver 从网页获取期权IV: 74.65%
+2026-01-19 12:29:46,456 - multi_data_fetcher - INFO - [OK] silver 境外数据获取成功 (ticker: SI=F)
+2026-01-19 12:29:46,456 - multi_data_fetcher - INFO -   白银: 国内IV=89.85% 境外IV=74.65% 差值=-15.20%
+2026-01-19 12:29:46,456 - multi_data_fetcher - INFO - 获取 原油 数据...
+2026-01-19 12:29:50,004 - multi_data_fetcher - INFO - crude_oil 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:29:50,005 - multi_data_fetcher - INFO - [真实IV] crude_oil 国内期权IV从SHFE获取: 44.50% (合约: sc2603)
+2026-01-19 12:29:50,167 - cme_web_scraper - INFO - 尝试从Barchart获取 CLH26 期权数据...
+2026-01-19 12:29:52,156 - cme_web_scraper - INFO - [Barchart] crude_oil 期权IV获取成功: 36.60%
+2026-01-19 12:29:52,157 - multi_data_fetcher - INFO - [Web] crude_oil 从网页获取期权IV: 36.60%
+2026-01-19 12:29:52,157 - multi_data_fetcher - INFO - [OK] crude_oil 境外数据获取成功 (ticker: CL=F)
+2026-01-19 12:29:52,157 - multi_data_fetcher - INFO -   原油: 国内IV=44.50% 境外IV=36.60% 差值=-7.90%
+2026-01-19 12:29:52,157 - multi_analyzer - INFO - 铜: IV差 -1.47% 小于阈值 3.0%
+2026-01-19 12:29:52,157 - multi_analyzer - INFO - 黄金: IV差 -2.86% 未达开仓阈值 6.0%
+2026-01-19 12:29:52,590 - option_contracts - INFO - silver 标的价格 22483.0, 选择行权价 22500.0, 差值 17.00
+2026-01-19 12:29:52,590 - multi_analyzer - INFO - 白银 国内期权: ag2603C22500/ag2603P22500 行权价 22500.0
+2026-01-19 12:29:52,590 - multi_analyzer - INFO - 白银 尝试从网页获取CME期权合约
+2026-01-19 12:29:52,590 - cme_web_scraper - INFO - 尝试从Barchart获取 SIH26 期权数据...
+2026-01-19 12:29:54,518 - cme_web_scraper - INFO - [Barchart] silver 期权IV获取成功: 74.65%
+2026-01-19 12:29:54,518 - multi_analyzer - INFO - 白银 [Web] 成功获取境外期权合约: SIH26C89/SIH26P89
+2026-01-19 12:29:54,518 - multi_analyzer - INFO - 白银 境外期权: SIH26C89/SIH26P89 行权价 88.53700256347656
+2026-01-19 12:29:54,518 - multi_analyzer - INFO - 白银: 发现套利信号，IV差=-15.20%
+2026-01-19 12:29:54,518 - multi_analyzer - INFO - 原油: IV差 -7.90% 未达开仓阈值 8.0%
+2026-01-19 12:29:54,518 - __main__ - INFO - 发送 白银 套利信号...
+2026-01-19 12:29:55,630 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 12:29:55,631 - __main__ - INFO - 白银 通知发送成功
+2026-01-19 12:29:55,631 - __main__ - INFO - 等待 300 秒...
+2026-01-19 12:34:25,135 - __main__ - INFO - 收到信号 2，准备停止...
+2026-01-19 12:34:25,234 - __main__ - INFO - 停止监控...
+2026-01-19 12:34:26,260 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 12:34:26,261 - __main__ - INFO - 程序已停止
+2026-01-19 12:34:29,453 - __main__ - INFO - 初始化多品种套利监控系统...
+2026-01-19 12:34:30,076 - multi_data_fetcher - INFO - akshare 初始化成功
+2026-01-19 12:34:30,183 - multi_data_fetcher - INFO - yfinance 初始化成功
+2026-01-19 12:34:30,185 - multi_data_fetcher - INFO - 网页爬虫初始化成功
+2026-01-19 12:34:30,185 - option_contracts - INFO - akshare 初始化成功
+2026-01-19 12:34:30,185 - option_contracts - INFO - yfinance 初始化成功
+2026-01-19 12:34:30,185 - multi_analyzer - INFO - CME网页爬虫初始化成功
+2026-01-19 12:34:30,185 - __main__ - INFO - 监控品种: 铜, 黄金, 白银, 原油
+2026-01-19 12:34:30,185 - __main__ - INFO - 启动多品种套利监控...
+2026-01-19 12:34:31,217 - telegram_notifier - INFO - Telegram 消息发送成功
+2026-01-19 12:34:31,218 - __main__ - INFO - ==================================================
+2026-01-19 12:34:31,218 - __main__ - INFO - 执行多品种套利检查...
+2026-01-19 12:34:31,218 - multi_data_fetcher - INFO - 获取 铜 数据...
+2026-01-19 12:34:36,366 - multi_data_fetcher - INFO - copper 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:34:36,367 - multi_data_fetcher - INFO - [真实IV] copper 国内期权IV从SHFE获取: 32.70% (合约: cu2602)
+2026-01-19 12:34:37,133 - cme_web_scraper - INFO - 尝试从Barchart获取 HGH26 期权数据...
+2026-01-19 12:34:39,150 - cme_web_scraper - INFO - [Barchart] copper 期权IV获取成功: 31.23%
+2026-01-19 12:34:39,151 - multi_data_fetcher - INFO - [Web] copper 从网页获取期权IV: 31.23%
+2026-01-19 12:34:39,151 - multi_data_fetcher - INFO - [OK] copper 境外数据获取成功 (ticker: HG=F)
+2026-01-19 12:34:39,151 - multi_data_fetcher - INFO -   铜: 国内IV=32.70% 境外IV=31.23% 差值=-1.47%
+2026-01-19 12:34:39,151 - multi_data_fetcher - INFO - 获取 黄金 数据...
+2026-01-19 12:34:43,833 - multi_data_fetcher - INFO - gold 使用 20260116 的IV数据（向前回溯3天）
+2026-01-19 12:34:43,834 - multi_data_fetcher - INFO - [真实IV] gold 国内期权IV从SHFE获取: 23.84% (合约: au2602)
+2026-01-19 12:34:43,996 - cme_web_scraper - INFO - 尝试从Barchart获取 GCH26 期权数据...
